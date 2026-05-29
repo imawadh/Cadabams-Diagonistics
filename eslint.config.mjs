@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Design-system reference kit — not part of the app, not imported anywhere.
+    "Cadabams MindTalk Design System/**",
   ]),
 ]);
 

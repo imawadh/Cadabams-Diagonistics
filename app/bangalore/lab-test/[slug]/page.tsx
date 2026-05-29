@@ -53,7 +53,7 @@ function splitMarkdownByH2(markdown: string): MarkdownSection[] {
   const lines = markdown.split(/\r?\n/);
   const sections: MarkdownSection[] = [];
   let current: MarkdownSection | null = null;
-  let preamble: string[] = [];
+  const preamble: string[] = [];
 
   for (const line of lines) {
     const h2Match = line.match(/^##\s+(.+?)\s*$/);

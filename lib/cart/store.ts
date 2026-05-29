@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 export interface CartItem {
   /** Stable id of the test/scan. */
@@ -83,18 +83,13 @@ export const selectSubtotal = (s: CartState) =>
  * to gate cart-dependent UI and avoid a hydration mismatch on first paint.
  */
 export function useCartHydrated(): boolean {
-  // Always start false so server and first client render agree (no mismatch),
-  // then flip to true once the persisted store has rehydrated on the client.
-  const [hydrated, setHydrated] = useState(false);
-  useEffect(() => {
-    const persist = useCartStore.persist;
-    if (!persist) {
-      setHydrated(true);
-      return;
-    }
-    if (persist.hasHydrated()) setHydrated(true);
-    const unsub = persist.onFinishHydration(() => setHydrated(true));
-    return unsub;
-  }, []);
-  return hydrated;
+  // useSyncExternalStore keeps server/first-client render at `false` (the
+  // server snapshot) and re-renders to `true` once the persisted store
+  // finishes rehydrating on the client — avoiding hydration mismatches
+  // without calling setState inside an effect.
+  return useSyncExternalStore(
+    (onChange) => useCartStore.persist.onFinishHydration(onChange),
+    () => useCartStore.persist.hasHydrated(),
+    () => false,
+  );
 }

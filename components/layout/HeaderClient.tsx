@@ -46,7 +46,11 @@ export function HeaderClient({
   const radioRef = useRef<HTMLDivElement>(null);
   const centerRef = useRef<HTMLDivElement>(null);
 
+  // Close any open menus/dropdowns whenever the route changes. This is an
+  // intentional sync with the router (an external system); the synchronous
+  // setState is safe here and only runs on navigation.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileOpen(false);
     setRadioOpen(false);
     setCenterOpen(false);

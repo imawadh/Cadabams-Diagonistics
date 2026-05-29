@@ -10,7 +10,6 @@ import {
   Star,
   Target,
   Check,
-  Stethoscope,
   Phone,
 } from "lucide-react";
 import { ContactActionButton } from "@/components/shared/ContactActionButton";
