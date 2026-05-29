@@ -1,0 +1,40 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Colors — Semantic</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  h3 { margin: 0 0 6px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .row { background: #fff; border-radius: 14px; padding: 12px 14px; box-shadow: var(--sh-1); display: flex; align-items: center; gap: 12px; }
+  .pill { padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+  .meta { margin-left: auto; font-size: 10px; color: var(--fg3); font-family: var(--font-mono); text-align: right; }
+  .label { font-size: 12px; font-weight: 700; color: var(--fg1); }
+  .desc { font-size: 11px; color: var(--fg3); }
+</style></head>
+<body>
+  <h3>Semantic state colors</h3>
+  <p class="sub">Used sparingly for slot availability, completion, errors, and informational nudges. Always paired with their tint background — never raw fills on cream.</p>
+  <div class="grid">
+    <div class="row">
+      <span class="pill" style="background:#E6F4EA;color:#1F8B4C">Available</span>
+      <div><div class="label">Success</div><div class="desc">slot available · completed</div></div>
+      <div class="meta">#1F8B4C<br/>#E6F4EA</div>
+    </div>
+    <div class="row">
+      <span class="pill" style="background:#FFE9D9;color:#C9531A">Few left</span>
+      <div><div class="label">Warning</div><div class="desc">few slots · attention</div></div>
+      <div class="meta">#C9531A<br/>#FFE9D9</div>
+    </div>
+    <div class="row">
+      <span class="pill" style="background:#FCE4E2;color:#DC4B45">Full</span>
+      <div><div class="label">Danger</div><div class="desc">no slots · error · cancel</div></div>
+      <div class="meta">#DC4B45<br/>#FCE4E2</div>
+    </div>
+    <div class="row">
+      <span class="pill" style="background:#E8F1FF;color:#2C7BE5">3 min focus</span>
+      <div><div class="label">Info</div><div class="desc">duration meta · neutral tag</div></div>
+      <div class="meta">#2C7BE5<br/>#E8F1FF</div>
+    </div>
+  </div>
+</body></html>

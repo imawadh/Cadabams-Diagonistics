@@ -1,0 +1,33 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Illustration registers</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  h3 { margin: 0 0 4px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 14px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .tile { border-radius: 18px; overflow: hidden; box-shadow: var(--sh-2); aspect-ratio: 1; background-size: cover; background-position: center; }
+  .lbl { font-size: 11px; font-weight: 700; color: var(--fg1); margin-top: 8px; }
+  .meta { font-size: 11px; color: var(--fg3); margin-top: 2px; }
+</style></head>
+<body>
+  <h3>Three illustration registers</h3>
+  <p class="sub">Pick the right one for the surface. Photography for content tiles. Painterly landscapes for journey hero covers. Soft fabric / silk-flow for onboarding heroes.</p>
+  <div class="grid">
+    <div>
+      <div class="tile" style="background-image:url('../assets/imagery/silk-flow-hero.png');background-position:top"></div>
+      <div class="lbl">Silk flow · onboarding</div>
+      <div class="meta">Translucent coral &amp; pink wisps</div>
+    </div>
+    <div>
+      <div class="tile" style="background-image:url('../assets/imagery/painterly-mountains.png');background-position:top"></div>
+      <div class="lbl">Painterly · journey hero</div>
+      <div class="meta">Sunset hills, warm brushstrokes</div>
+    </div>
+    <div>
+      <div class="tile" style="background-image:url('../assets/imagery/painterly-sprout.png');background-position:top"></div>
+      <div class="lbl">Sprout motif · growth</div>
+      <div class="meta">Replaces aggressive streaks</div>
+    </div>
+  </div>
+</body></html>

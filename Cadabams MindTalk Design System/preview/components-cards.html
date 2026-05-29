@@ -1,0 +1,42 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Cards & surfaces</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  h3 { margin: 0 0 4px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .card { background: #fff; border-radius: 18px; padding: 16px; box-shadow: var(--sh-2); }
+  .hero { background: linear-gradient(90deg,#F77268 0%,#F97316 100%); color: #fff; border-radius: 24px; padding: 18px; box-shadow: 0 12px 28px rgba(247,114,104,.22); }
+  .dark { background: #1C2433; color: #fff; border-radius: 18px; padding: 16px; }
+  .locked { background: #F4F2EE; border-radius: 18px; padding: 16px; min-height: 80px; display: flex; align-items: center; justify-content: center; }
+  .label-name { font-size: 11px; color: var(--fg3); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+  .ttl { font-size: 16px; font-weight: 700; color: #0E1726; }
+  .meta { font-size: 12px; color: var(--fg3); }
+  .hero-ttl { font-size: 18px; font-weight: 800; }
+  .hero-sub { font-size: 13px; opacity: 0.95; margin-top: 4px; }
+  .lock { width: 28px; height: 28px; background: #E2E5EA; border-radius: 999px; display: flex; align-items: center; justify-content: center; }
+  .lock svg { width: 14px; height: 14px; stroke: #6B7280; fill: none; stroke-width: 2; }
+</style></head>
+<body>
+  <h3>Cards & surfaces</h3>
+  <p class="sub">Standard cards: white on cream, soft shadow, 18 radius. Hero cards: gradient or photo, 24+ radius. Dark cards: deep ink for AI / sessions. Locked: flat fog.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="label-name">Standard</div>
+      <div class="ttl">Daily Gratitude</div>
+      <div class="meta">3 min · Guided</div>
+    </div>
+    <div class="hero">
+      <div class="hero-ttl">Free Flow</div>
+      <div class="hero-sub">Write whatever is on your mind. No prompts, just you.</div>
+    </div>
+    <div class="dark">
+      <div style="font-size:11px;font-weight:700;color:#FFA875;letter-spacing:0.06em">UPCOMING SESSION · 4:00 PM</div>
+      <div class="ttl" style="color:#fff;margin-top:4px">Dr. Ananya Reddy</div>
+    </div>
+    <div class="locked">
+      <div class="lock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+    </div>
+  </div>
+</body></html>

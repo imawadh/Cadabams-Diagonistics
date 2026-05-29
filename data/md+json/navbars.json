@@ -1,0 +1,42 @@
+[
+  {
+    "id": "671b5102ad9bf8d210384d18",
+    "visible": true,
+    "content": {
+      "logo": "/shared/image-1727884059139-383535423.webp",
+      "navigationLinks": [
+        {
+          "text": "Home",
+          "href": "/",
+          "id": "66feddd73fef02aef23add82"
+        },
+        {
+          "text": "Tests",
+          "href": "/labtest",
+          "id": "66feddd73fef02aef23add83"
+        },
+        {
+          "text": "Checkups",
+          "href": "/health-checkup",
+          "id": "66feddd73fef02aef23add84"
+        },
+        {
+          "text": "About Us",
+          "href": "/about",
+          "id": "66feddd73fef02aef23add85"
+        },
+        {
+          "text": "Contact",
+          "href": "/contact",
+          "id": "66feddd73fef02aef23add86"
+        },
+        {
+          "text": "blog",
+          "href": "/blogs",
+          "id": "66feddd73fef02aef23add87"
+        }
+      ],
+      "id": "66feddd73fef02aef23add81"
+    }
+  }
+]

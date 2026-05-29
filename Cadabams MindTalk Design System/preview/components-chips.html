@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Chips & pills</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  h3 { margin: 0 0 4px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 14px; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 8px 0; }
+  .lbl { width: 110px; font-size: 11px; color: var(--fg3); font-family: var(--font-mono); }
+  .chip { padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 600; background: #fff; color: #0E1726; box-shadow: var(--sh-1); border: 1px solid #ECE6DE; }
+  .chip-active { background: #1C2433; color: #fff; border-color: transparent; }
+  .chip-tag { padding: 5px 11px; font-size: 12px; background: #F4F2EE; color: #4A5260; border: 0; border-radius: 999px; font-weight: 500; box-shadow: none;}
+  .chip-ai { padding: 6px 12px; font-size: 12px; background: #FBF5EF; color: #C9531A; border: 1px solid #FFE9D9; border-radius: 999px; font-weight: 700; box-shadow: none; display: inline-flex; align-items: center; gap: 6px; }
+  .chip-ai svg { width: 12px; height: 12px; }
+  .chip-streak { padding: 6px 12px; font-size: 12px; background: #FFE4D2; color: #C9531A; font-weight: 700; border: 0; border-radius: 999px; box-shadow: none; display: inline-flex; align-items: center; gap: 4px; }
+  .chip-rec { padding: 5px 12px; font-size: 11px; background: #2D3441; color: #fff; border: 0; border-radius: 999px; font-weight: 700; box-shadow: none;}
+</style></head>
+<body>
+  <h3>Chips & pills</h3>
+  <p class="sub">Filter chips: white pills with hairline; active = solid ink. Tags are flat fog gray. AI pill carries the sparkle and peach tint.</p>
+  <div class="row"><div class="lbl">filter</div>
+    <span class="chip chip-active">All</span>
+    <span class="chip">Anxiety</span>
+    <span class="chip">Sleep</span>
+    <span class="chip">Depression</span>
+  </div>
+  <div class="row"><div class="lbl">tag</div>
+    <span class="chip-tag">Anxiety</span>
+    <span class="chip-tag">Depression</span>
+    <span class="chip-tag">CBT</span>
+    <span class="chip-tag">+2</span>
+  </div>
+  <div class="row"><div class="lbl">AI-generated</div>
+    <span class="chip-ai"><svg viewBox="0 0 24 24" fill="#F97316"><path d="M12 2l1.6 4.4L18 8l-4.4 1.6L12 14l-1.6-4.4L6 8l4.4-1.6z"/><path d="M19 14l.8 2.2 2.2.8-2.2.8L19 20l-.8-2.2L16 17l2.2-.8z"/></svg>AI-generated summary</span>
+  </div>
+  <div class="row"><div class="lbl">streak</div>
+    <span class="chip-streak">🔥 3 Day Streak</span>
+  </div>
+  <div class="row"><div class="lbl">recommended</div>
+    <span class="chip-rec">Recommended</span>
+    <span class="chip-rec" style="background:#0E1726">Trending</span>
+  </div>
+</body></html>

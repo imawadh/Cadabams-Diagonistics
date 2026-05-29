@@ -1,0 +1,44 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Date strip</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  h3 { margin: 0 0 4px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 16px; }
+  .strip { background: #fff; border-radius: 999px; padding: 8px; display: flex; gap: 4px; box-shadow: var(--sh-1); justify-content: space-between; }
+  .day { display: flex; flex-direction: column; align-items: center; padding: 8px 4px; min-width: 38px; border-radius: 999px; gap: 2px; }
+  .day .w { font-size: 11px; color: var(--fg3); font-weight: 600; }
+  .day .n { font-size: 16px; font-weight: 700; color: #0E1726; font-feature-settings:"tnum" 1; }
+  .day.active { background: #F97316; }
+  .day.active .w, .day.active .n { color: #fff; }
+  .grid { margin-top: 14px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .slot { background: #fff; border-radius: 14px; padding: 10px; text-align: center; box-shadow: var(--sh-1); border: 1px solid #ECE6DE; }
+  .slot.active { border: 2px solid #F97316; padding: 9px; }
+  .slot.full { background: #F4F2EE; }
+  .slot .w { font-size: 11px; color: var(--fg3); font-weight: 600; }
+  .slot .n { font-size: 18px; font-weight: 800; color: #0E1726; font-feature-settings:"tnum" 1; }
+  .slot .pill { display: inline-block; margin-top: 4px; padding: 2px 6px; border-radius: 6px; font-size: 9px; font-weight: 700; }
+  .pill-ok { background: #E6F4EA; color: #1F8B4C; }
+  .pill-few { background: #FFE9D9; color: #C9531A; }
+  .pill-full { background: #FCE4E2; color: #DC4B45; }
+</style></head>
+<body>
+  <h3>Date selectors</h3>
+  <p class="sub">Two patterns. <strong>Strip</strong>: weekday Mon–Sun pill, current day filled orange (Daily Gratitude). <strong>Squircle</strong>: per-slot availability state (booking).</p>
+  <div class="strip">
+    <div class="day"><span class="w">M</span><span class="n">24</span></div>
+    <div class="day"><span class="w">T</span><span class="n">25</span></div>
+    <div class="day"><span class="w">W</span><span class="n">26</span></div>
+    <div class="day"><span class="w">T</span><span class="n">27</span></div>
+    <div class="day active"><span class="w">F</span><span class="n">28</span></div>
+    <div class="day"><span class="w">S</span><span class="n">29</span></div>
+    <div class="day"><span class="w">S</span><span class="n">30</span></div>
+  </div>
+  <div class="grid">
+    <div class="slot active"><div class="w" style="color:#F97316">Mon</div><div class="n" style="color:#F97316">23</div><div class="pill pill-ok">Available</div></div>
+    <div class="slot"><div class="w">Tue</div><div class="n">24</div><div class="pill pill-ok">Available</div></div>
+    <div class="slot"><div class="w">Wed</div><div class="n">25</div><div class="pill pill-few">Few left</div></div>
+    <div class="slot full"><div class="w">Thu</div><div class="n">26</div><div class="pill pill-full">Full</div></div>
+    <div class="slot"><div class="w">Fri</div><div class="n">27</div><div class="pill pill-ok">Available</div></div>
+  </div>
+</body></html>

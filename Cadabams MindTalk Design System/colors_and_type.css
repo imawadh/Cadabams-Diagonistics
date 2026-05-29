@@ -1,0 +1,297 @@
+/* ==========================================================================
+   Cadabams MindTalk — Colors & Type
+   Mobile-first mental health super-app. Warm, ethereal, calm.
+   Golden-hour palette over cream backgrounds, with clinical credibility.
+   ========================================================================== */
+
+/* -------- Fonts ----------------------------------------------------------- */
+/* Brand font: Inter (static instances, three optical sizes).
+   Use 'Inter Text' (18pt) for small UI labels and dense rows,
+   plain 'Inter' (24pt) for body and most UI — this is the default,
+   'Inter Display' (28pt) for display headlines (>= 28px). */
+
+@font-face { font-family: 'Inter Text'; font-style: normal; font-weight: 100; font-display: swap; src: url('fonts/Inter_18pt-Thin.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: italic;  font-weight: 100; font-display: swap; src: url('fonts/Inter_18pt-ThinItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: normal; font-weight: 200; font-display: swap; src: url('fonts/Inter_18pt-ExtraLight.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: italic;  font-weight: 200; font-display: swap; src: url('fonts/Inter_18pt-ExtraLightItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: normal; font-weight: 300; font-display: swap; src: url('fonts/Inter_18pt-Light.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: italic;  font-weight: 300; font-display: swap; src: url('fonts/Inter_18pt-LightItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/Inter_18pt-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: italic;  font-weight: 400; font-display: swap; src: url('fonts/Inter_18pt-Italic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/Inter_18pt-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: italic;  font-weight: 500; font-display: swap; src: url('fonts/Inter_18pt-MediumItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/Inter_18pt-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: italic;  font-weight: 600; font-display: swap; src: url('fonts/Inter_18pt-SemiBoldItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/Inter_18pt-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: italic;  font-weight: 700; font-display: swap; src: url('fonts/Inter_18pt-BoldItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: normal; font-weight: 800; font-display: swap; src: url('fonts/Inter_18pt-ExtraBold.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: italic;  font-weight: 800; font-display: swap; src: url('fonts/Inter_18pt-ExtraBoldItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/Inter_18pt-Black.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Text'; font-style: italic;  font-weight: 900; font-display: swap; src: url('fonts/Inter_18pt-BlackItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 100; font-display: swap; src: url('fonts/Inter_24pt-Thin.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: italic;  font-weight: 100; font-display: swap; src: url('fonts/Inter_24pt-ThinItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 200; font-display: swap; src: url('fonts/Inter_24pt-ExtraLight.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: italic;  font-weight: 200; font-display: swap; src: url('fonts/Inter_24pt-ExtraLightItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 300; font-display: swap; src: url('fonts/Inter_24pt-Light.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: italic;  font-weight: 300; font-display: swap; src: url('fonts/Inter_24pt-LightItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/Inter_24pt-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: italic;  font-weight: 400; font-display: swap; src: url('fonts/Inter_24pt-Italic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/Inter_24pt-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: italic;  font-weight: 500; font-display: swap; src: url('fonts/Inter_24pt-MediumItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/Inter_24pt-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: italic;  font-weight: 600; font-display: swap; src: url('fonts/Inter_24pt-SemiBoldItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/Inter_24pt-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: italic;  font-weight: 700; font-display: swap; src: url('fonts/Inter_24pt-BoldItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 800; font-display: swap; src: url('fonts/Inter_24pt-ExtraBold.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: italic;  font-weight: 800; font-display: swap; src: url('fonts/Inter_24pt-ExtraBoldItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/Inter_24pt-Black.ttf') format('truetype'); }
+@font-face { font-family: 'Inter'; font-style: italic;  font-weight: 900; font-display: swap; src: url('fonts/Inter_24pt-BlackItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: normal; font-weight: 100; font-display: swap; src: url('fonts/Inter_28pt-Thin.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: italic;  font-weight: 100; font-display: swap; src: url('fonts/Inter_28pt-ThinItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: normal; font-weight: 200; font-display: swap; src: url('fonts/Inter_28pt-ExtraLight.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: italic;  font-weight: 200; font-display: swap; src: url('fonts/Inter_28pt-ExtraLightItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: normal; font-weight: 300; font-display: swap; src: url('fonts/Inter_28pt-Light.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: italic;  font-weight: 300; font-display: swap; src: url('fonts/Inter_28pt-LightItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/Inter_28pt-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: italic;  font-weight: 400; font-display: swap; src: url('fonts/Inter_28pt-Italic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/Inter_28pt-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: italic;  font-weight: 500; font-display: swap; src: url('fonts/Inter_28pt-MediumItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/Inter_28pt-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: italic;  font-weight: 600; font-display: swap; src: url('fonts/Inter_28pt-SemiBoldItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/Inter_28pt-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: italic;  font-weight: 700; font-display: swap; src: url('fonts/Inter_28pt-BoldItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: normal; font-weight: 800; font-display: swap; src: url('fonts/Inter_28pt-ExtraBold.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: italic;  font-weight: 800; font-display: swap; src: url('fonts/Inter_28pt-ExtraBoldItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/Inter_28pt-Black.ttf') format('truetype'); }
+@font-face { font-family: 'Inter Display'; font-style: italic;  font-weight: 900; font-display: swap; src: url('fonts/Inter_28pt-BlackItalic.ttf') format('truetype'); }
+
+:root {
+  /* ------ Brand color: warm orange ------------------------------------- */
+  --mt-orange-50:  #FFF4EC;
+  --mt-orange-100: #FFE4D2;
+  --mt-orange-200: #FFC9A6;
+  --mt-orange-300: #FFA875;
+  --mt-orange-400: #FF8A47;
+  --mt-orange-500: #F97316;  /* primary CTA */
+  --mt-orange-600: #E8620A;
+  --mt-orange-700: #D8670E;  /* logo / deep brand */
+  --mt-orange-800: #A8480A;
+  --mt-orange-900: #6E2F08;
+
+  /* ------ Coral / pink accents (gradient hero & mood) ------------------ */
+  --mt-coral-300: #FF9C8A;
+  --mt-coral-400: #F77268;
+  --mt-pink-200:  #FFD9DC;
+  --mt-pink-300:  #FBB7BC;
+  --mt-pink-400:  #F58F9A;
+
+  /* ------ Cream / cool neutrals ---------------------------------------- */
+  --mt-cream-bg:    #FAF7F4;  /* canvas */
+  --mt-cream-soft:  #FBF5EF;  /* AI summary tint */
+  --mt-cream-card:  #FFFFFF;  /* cards float on cream */
+  --mt-line:        #ECE6DE;  /* hairline on cream */
+  --mt-line-soft:   #F1ECE5;
+  --mt-fog:         #F4F2EE;  /* disabled / locked tile */
+
+  /* ------ Ink (text & dark surfaces) ----------------------------------- */
+  --mt-ink-900: #0E1726;   /* near-black, primary text */
+  --mt-ink-800: #1C2433;   /* dark CTA / dark hero card */
+  --mt-ink-700: #2D3441;
+  --mt-ink-600: #4A5260;   /* secondary text */
+  --mt-ink-500: #6B7280;   /* tertiary / meta */
+  --mt-ink-400: #9AA0AB;   /* placeholder */
+  --mt-ink-300: #C7CCD3;   /* dividers on white */
+  --mt-ink-200: #E2E5EA;
+
+  /* ------ Categorical icon tints (soft pastels behind glyphs) ---------- */
+  --mt-tint-blue:    #E8F1FF;  /* gratitude sun, audio progress */
+  --mt-tint-blue-fg: #2C7BE5;
+  --mt-tint-purple:    #F1EBFF;  /* sleep / evening */
+  --mt-tint-purple-fg: #6C5CE7;
+  --mt-tint-green:    #E6F4EA;  /* breathe / done */
+  --mt-tint-green-fg: #1F8B4C;
+  --mt-tint-pink:    #FFE6EA;  /* relationships / self-love */
+  --mt-tint-pink-fg: #D03B5C;
+  --mt-tint-peach:    #FFE9D9;  /* assess / warmth */
+  --mt-tint-peach-fg: #C9531A;
+
+  /* ------ Mood dots (home greeting card) ------------------------------- */
+  --mt-mood-yellow: #F7C44A;
+  --mt-mood-peach:  #F7A172;
+  --mt-mood-pink:   #F58F9A;
+  --mt-mood-green:  #6FB58A;
+  --mt-mood-teal:   #1F4D55;
+  --mt-mood-red:    #DC4B45;
+
+  /* ------ Semantic ------------------------------------------------------ */
+  --mt-success: #1F8B4C;
+  --mt-success-bg: #E6F4EA;
+  --mt-warning: #C9531A;
+  --mt-warning-bg: #FFE9D9;
+  --mt-danger:  #DC4B45;
+  --mt-danger-bg: #FCE4E2;
+  --mt-info:    #2C7BE5;
+  --mt-info-bg: #E8F1FF;
+
+  /* ------ Gradients ----------------------------------------------------- */
+  --mt-gradient-cta: linear-gradient(90deg, #F77268 0%, #F97316 100%);
+  --mt-gradient-hero: linear-gradient(120deg, #F77268 0%, #FF9466 45%, #F97316 100%);
+  --mt-gradient-greeting: linear-gradient(135deg, #F58F9A 0%, #F77268 50%, #F97316 100%);
+  --mt-gradient-orange-soft: linear-gradient(180deg, #FFE4D2 0%, #FAF7F4 70%);
+  --mt-gradient-coral-pink: linear-gradient(90deg, #F77268 0%, #FBB7BC 100%);
+  --mt-gradient-glow: radial-gradient(60% 60% at 50% 50%, rgba(249,115,22,0.35) 0%, rgba(249,115,22,0) 70%);
+
+  /* ------ Foreground / background semantic vars ------------------------ */
+  --bg:        var(--mt-cream-bg);
+  --bg-elev:   var(--mt-cream-card);
+  --bg-sunken: var(--mt-fog);
+  --fg1:       var(--mt-ink-900);   /* headlines, primary */
+  --fg2:       var(--mt-ink-600);   /* body */
+  --fg3:       var(--mt-ink-500);   /* meta */
+  --fg-muted:  var(--mt-ink-400);
+  --fg-on-orange: #FFFFFF;
+  --fg-on-ink:    #FFFFFF;
+  --line:      var(--mt-line);
+  --line-soft: var(--mt-line-soft);
+  --accent:    var(--mt-orange-500);
+  --accent-deep: var(--mt-orange-700);
+
+  /* ------ Type stack ---------------------------------------------------- */
+  /* Default body uses 24pt cut. Display uses 28pt cut. Tight UI labels can
+     opt into 'Inter Text' (18pt) by overriding font-family inline. */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Inter Display', 'Inter', -apple-system, system-ui, sans-serif;
+  --font-text: 'Inter Text', 'Inter', -apple-system, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* ------ Type scale (mobile-first) ------------------------------------ */
+  /* Headlines are bold, generous, tight-tracked. Numbers and metrics scale up. */
+  --fs-display-1: 40px;   /* hero metric / journey title */
+  --fs-display-2: 32px;   /* screen titles (Journal, Assessments) */
+  --fs-h1:        28px;   /* primary screen heading */
+  --fs-h2:        22px;   /* card title / hero text */
+  --fs-h3:        18px;   /* section heading */
+  --fs-body:      16px;
+  --fs-body-sm:   14px;
+  --fs-meta:      13px;
+  --fs-caption:   12px;
+  --fs-overline:  11px;   /* "TODAY'S PROMPT", uppercase */
+
+  --lh-tight:  1.12;
+  --lh-snug:   1.25;
+  --lh-base:   1.45;
+  --lh-relaxed:1.6;
+
+  --tracking-tight: -0.02em;
+  --tracking-snug:  -0.01em;
+  --tracking-base:  0em;
+  --tracking-wide:  0.02em;
+  --tracking-overline: 0.08em;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  /* ------ Radii (heavy rounding) --------------------------------------- */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;     /* standard card */
+  --r-xl: 24px;     /* hero card / large surface */
+  --r-2xl: 32px;    /* greeting hero */
+  --r-3xl: 40px;    /* full-bleed hero */
+  --r-pill: 999px;  /* chips, dates, CTAs */
+
+  /* ------ Spacing ------------------------------------------------------- */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-7:  32px;
+  --s-8:  40px;
+  --s-9:  56px;
+  --gutter: 20px;          /* mobile screen gutter */
+
+  /* ------ Shadows (soft, never hard) ----------------------------------- */
+  --sh-1: 0 1px 2px rgba(15,23,42,0.04), 0 1px 1px rgba(15,23,42,0.03);
+  --sh-2: 0 2px 6px rgba(15,23,42,0.05), 0 6px 16px rgba(15,23,42,0.04);
+  --sh-3: 0 8px 24px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04);
+  --sh-glow-orange: 0 12px 28px rgba(249,115,22,0.28);
+  --sh-glow-soft:   0 8px 24px rgba(247,114,104,0.18);
+  --sh-press:       inset 0 1px 2px rgba(15,23,42,0.08);
+
+  /* ------ Motion -------------------------------------------------------- */
+  --ease-out: cubic-bezier(.22,.61,.36,1);
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 380ms;
+}
+
+/* ==========================================================================
+   Semantic typography
+   ========================================================================== */
+html, body {
+  background: var(--bg);
+  color: var(--fg1);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.mt-display-1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-1);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+  color: var(--fg1);
+}
+.mt-display-2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-2);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-tight);
+  color: var(--fg1);
+}
+.mt-h1 {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-snug);
+  line-height: var(--lh-snug);
+  color: var(--fg1);
+}
+.mt-h2 {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-snug);
+  line-height: var(--lh-snug);
+  color: var(--fg1);
+}
+.mt-h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semi);
+  line-height: var(--lh-snug);
+  color: var(--fg1);
+}
+.mt-body { font-size: var(--fs-body); color: var(--fg2); }
+.mt-body-sm { font-size: var(--fs-body-sm); color: var(--fg2); }
+.mt-meta { font-size: var(--fs-meta); color: var(--fg3); }
+.mt-caption { font-size: var(--fs-caption); color: var(--fg3); }
+.mt-overline {
+  font-size: var(--fs-overline);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  font-weight: var(--fw-bold);
+  color: var(--mt-orange-600);
+}
+.mt-numeric {
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}

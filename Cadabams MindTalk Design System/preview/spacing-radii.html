@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Radii</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  h3 { margin: 0 0 4px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 14px; }
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+  .tile { background: #fff; box-shadow: var(--sh-2); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+  .name { font-size: 11px; font-weight: 700; color: var(--fg1); }
+  .val { font-size: 10px; color: var(--fg3); font-family: var(--font-mono); }
+</style></head>
+<body>
+  <h3>Radii — heavy and consistent</h3>
+  <p class="sub">Standard cards 18–24. Hero blocks 28–40. Pills are fully rounded — chips, dates, CTAs.</p>
+  <div class="grid">
+    <div class="tile" style="border-radius:6px"><div class="name">xs</div><div class="val">6</div></div>
+    <div class="tile" style="border-radius:10px"><div class="name">sm</div><div class="val">10</div></div>
+    <div class="tile" style="border-radius:14px"><div class="name">md</div><div class="val">14</div></div>
+    <div class="tile" style="border-radius:18px"><div class="name">lg</div><div class="val">18 · card</div></div>
+    <div class="tile" style="border-radius:24px"><div class="name">xl</div><div class="val">24</div></div>
+    <div class="tile" style="border-radius:32px"><div class="name">2xl</div><div class="val">32 · hero</div></div>
+    <div class="tile" style="border-radius:999px"><div class="name">pill</div><div class="val">999</div></div>
+  </div>
+</body></html>

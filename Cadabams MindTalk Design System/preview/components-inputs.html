@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Inputs</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  h3 { margin: 0 0 4px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 14px; }
+  .stack { display: grid; gap: 12px; }
+  .field { background: #fff; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-shadow: var(--sh-1); border: 1px solid #ECE6DE; font-size: 14px; }
+  .field.focus { border-color: #F97316; box-shadow: 0 0 0 3px rgba(249,115,22,.12); }
+  .ph { color: #9AA0AB; }
+  .label { font-size: 11px; color: var(--fg3); margin-bottom: 4px; font-weight: 600; }
+  .leading { color: #4A5260; }
+  .div { width: 1px; height: 18px; background: #ECE6DE; }
+  .search { background: #fff; border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; box-shadow: var(--sh-1); border: 1px solid #ECE6DE; }
+  .search svg { width: 16px; height: 16px; stroke: #9AA0AB; fill: none; stroke-width: 2; }
+  .pwa { background: #fff; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-shadow: var(--sh-1); border: 2px solid #F97316; font-size: 14px; }
+</style></head>
+<body>
+  <h3>Inputs</h3>
+  <p class="sub">White on cream, hairline border, 14-px radius. Focused state uses a 2-px brand-orange ring + soft glow.</p>
+  <div class="stack">
+    <div>
+      <div class="label">Mobile number · default</div>
+      <div class="field"><span class="leading">🇺🇸 +1</span><span class="div"></span><span class="ph">Mobile number</span></div>
+    </div>
+    <div>
+      <div class="label">Mobile number · focus</div>
+      <div class="field focus"><span class="leading">🇮🇳 +91</span><span class="div"></span><span style="color:#0E1726">98765 43210</span></div>
+    </div>
+    <div>
+      <div class="label">Search</div>
+      <div class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        <span class="ph">Try "Sleep meditation" or "Anxiety"</span>
+      </div>
+    </div>
+    <div>
+      <div class="label">Country select · selected</div>
+      <div class="pwa">
+        <span style="font-size:18px">🇮🇳</span><span style="color:#F97316;font-weight:700">India</span>
+        <span style="margin-left:auto;color:#F97316;font-weight:700">+91 ✓</span>
+      </div>
+    </div>
+  </div>
+</body></html>

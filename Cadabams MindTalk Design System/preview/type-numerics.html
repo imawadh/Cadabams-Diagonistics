@@ -1,0 +1,34 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Type — Numerics</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  h3 { margin: 0 0 4px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 16px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stat { background: #fff; border-radius: 18px; padding: 16px; box-shadow: var(--sh-2); text-align: center; }
+  .num { font-size: 36px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; font-feature-settings: "tnum" 1, "lnum" 1; }
+  .num-orange { color: #F97316; }
+  .num-ink { color: #0E1726; }
+  .num-success { color: #1F8B4C; }
+  .num-info { color: #2C7BE5; }
+  .lbl { font-size: 11px; color: var(--fg3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 8px; }
+  .pct { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; color: #0E1726; line-height: 1; }
+  .pct .unit { font-size: 32px; color: #6B7280; font-weight: 700; }
+  .hero { background: #fff; border-radius: 18px; padding: 18px; box-shadow: var(--sh-2); display: flex; align-items: baseline; gap: 16px; margin-top: 12px; }
+  .hero .ctx { font-size: 12px; color: var(--fg3); }
+</style></head>
+<body>
+  <h3>Numerics — display emphasis</h3>
+  <p class="sub">Stats, day counts, percentages, XP, gems and streak counts get display-size emphasis. Tabular figures (<code>tnum</code>) so columns stay aligned.</p>
+  <div class="grid">
+    <div class="stat"><div class="num num-orange">3</div><div class="lbl">Streak · days</div></div>
+    <div class="stat"><div class="num num-info">450</div><div class="lbl">Gems</div></div>
+    <div class="stat"><div class="num num-success">30%</div><div class="lbl">Done</div></div>
+    <div class="stat"><div class="num num-ink">9/90</div><div class="lbl">Day · journey</div></div>
+  </div>
+  <div class="hero">
+    <div class="pct">72<span class="unit">%</span></div>
+    <div><div style="font-weight:700;color:#0E1726;font-size:16px">Overall balance</div><div class="ctx">Moderate · GAD-7 result</div></div>
+  </div>
+</body></html>

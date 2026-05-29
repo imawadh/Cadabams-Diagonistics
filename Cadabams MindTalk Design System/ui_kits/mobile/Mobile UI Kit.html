@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MindTalk · Mobile UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px 16px; background: #F4F1EC;
+    font-family: 'Inter', system-ui, sans-serif; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 36px 28px; max-width: 1640px; margin: 0 auto; justify-items: center; align-items: start; }
+  .frame { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .lbl { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: #4A5260;
+    text-transform: uppercase; }
+  .lbl span { font-weight: 500; color: #9AA0AB; text-transform: none; letter-spacing: 0; }
+</style>
+</head>
+<body>
+
+<div class="grid" id="grid"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="primitives.jsx"></script>
+<script type="text/babel" src="HomeScreen.jsx"></script>
+<script type="text/babel" src="JournalScreen.jsx"></script>
+<script type="text/babel" src="JourneyScreen.jsx"></script>
+<script type="text/babel" src="TherapistsScreen.jsx"></script>
+<script type="text/babel" src="AssessmentReportScreen.jsx"></script>
+<script type="text/babel" src="OnboardingScreens.jsx"></script>
+<script type="text/babel" src="ExploreScreens.jsx"></script>
+<script type="text/babel" src="HomeVariations.jsx"></script>
+
+<script type="text/babel">
+function Frame({ label, sub, children }) {
+  return (
+    <div className="frame">
+      <IOSDevice>{children}</IOSDevice>
+      <div className="lbl">{label} <span>· {sub}</span></div>
+    </div>
+  );
+}
+
+function Kit() {
+  return (
+    <>
+      <Frame label="Home" sub="primary surface · greeting + actions">
+        <HomeScreen />
+      </Frame>
+      <Frame label="Home · V11" sub="pink hero · white quick-action cards">
+        <HomeV11Screen />
+      </Frame>
+      <Frame label="Home · Daily Growth" sub="week strip · activity timeline">
+        <HomeDailyGrowthScreen />
+      </Frame>
+      <Frame label="Journal" sub="Free Flow + guided reflection">
+        <JournalScreen />
+      </Frame>
+      <Frame label="Journey" sub="vertical step path · zig-zag">
+        <JourneyScreen />
+      </Frame>
+      <Frame label="Therapists" sub="match CTA · filter chips · cards">
+        <TherapistsScreen />
+      </Frame>
+      <Frame label="Assessment Report" sub="AI summary · disclaimer · CTA">
+        <AssessmentReportScreen />
+      </Frame>
+
+      <Frame label="Phone Login" sub="silk hero · gradient CTA · onboarding entry">
+        <PhoneLoginScreen />
+      </Frame>
+      <Frame label="Country Select" sub="suggested · all countries list">
+        <CountrySelectScreen />
+      </Frame>
+      <Frame label="Option Select" sub="bottom sheet · radio response">
+        <OptionSelectScreen />
+      </Frame>
+      <Frame label="Explore" sub="daily pick · feelings · sleep stories">
+        <ExploreScreen />
+      </Frame>
+      <Frame label="Audio Resets" sub="filter chips · play list · tags">
+        <AudioListScreen />
+      </Frame>
+      <Frame label="Reflection Player" sub="blue glow · scrubber · pause">
+        <ReflectionPlayerScreen />
+      </Frame>
+      <Frame label="Breathing Exercise" sub="4-7-8 · pulsing orb · timer">
+        <BreathingScreen />
+      </Frame>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('grid')).render(<Kit />);
+</script>
+</body>
+</html>

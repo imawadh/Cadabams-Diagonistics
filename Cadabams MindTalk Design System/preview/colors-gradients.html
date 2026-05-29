@@ -1,0 +1,39 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Gradients</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  h3 { margin: 0 0 6px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 14px; }
+  .stack { display: grid; gap: 12px; }
+  .grad { height: 88px; border-radius: 24px; padding: 16px 20px; color: #fff; box-shadow: var(--sh-2); display: flex; flex-direction: column; justify-content: space-between; }
+  .name { font-size: 13px; font-weight: 800; letter-spacing: -0.01em; }
+  .meta { font-size: 11px; opacity: 0.85; font-family: var(--font-mono); }
+  .where { font-size: 11px; opacity: 0.85; }
+</style></head>
+<body>
+  <h3>Hero gradients</h3>
+  <p class="sub">Gradients are <em>directional</em> — coral always sits left, orange right, pink at the start of the warmest. Never radial backgrounds.</p>
+  <div class="stack">
+    <div class="grad" style="background:linear-gradient(90deg,#F77268 0%,#F97316 100%)">
+      <div class="name">gradient-cta</div>
+      <div class="where">CTA buttons (Continue, Book Now), Free Flow journal hero</div>
+      <div class="meta">linear-gradient(90deg, #F77268, #F97316)</div>
+    </div>
+    <div class="grad" style="background:linear-gradient(135deg,#F58F9A 0%,#F77268 50%,#F97316 100%)">
+      <div class="name">gradient-greeting</div>
+      <div class="where">Home greeting card · "Hi Sarah, how are you feeling?"</div>
+      <div class="meta">linear-gradient(135deg, #F58F9A, #F77268, #F97316)</div>
+    </div>
+    <div class="grad" style="background:linear-gradient(90deg,#F77268 0%,#FBB7BC 100%)">
+      <div class="name">gradient-coral-pink</div>
+      <div class="where">Current journey card on Home Redesign Grid</div>
+      <div class="meta">linear-gradient(90deg, #F77268, #FBB7BC)</div>
+    </div>
+    <div class="grad" style="background:linear-gradient(180deg,#FFE4D2 0%,#FAF7F4 70%);color:#0E1726">
+      <div class="name">gradient-orange-soft</div>
+      <div class="where">Section background under Daily Growth · top-fade headers</div>
+      <div class="meta">linear-gradient(180deg, #FFE4D2, #FAF7F4 70%)</div>
+    </div>
+  </div>
+</body></html>

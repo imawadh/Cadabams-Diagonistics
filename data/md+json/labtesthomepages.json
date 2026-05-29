@@ -1,0 +1,146 @@
+[
+  {
+    "id": "671dcc88de80dea24f266179",
+    "visible": true,
+    "hero": {
+      "title": "Lab Test Services",
+      "subtitle": "Accurate lab results you can rely on. Certified centres ",
+      "imageSrc": "/lab-tests/image-1731911176584-798303718.webp"
+    },
+    "test_card": {
+      "title": "Popular Test in Bengalore",
+      "testCatIds": [
+        "671b5104ad9bf8d210384d22",
+        "671b5104ad9bf8d210384d23",
+        "671b5104ad9bf8d210384d24"
+      ],
+      "tests": [
+        "671b5105ad9bf8d210384d2f",
+        "671b5105ad9bf8d210384d30",
+        "671c7cc7c8a77735c8e4410e",
+        "671c7dd9c8a77735c8e44129",
+        "6720b1f4b61a968f2fc61587",
+        "672bab2e21cadfab64a6f854"
+      ]
+    },
+    "healthMonitoring": {
+      "content": [
+        {
+          "title": "Urine Analysis",
+          "description": "Urine analysis is also known as urinalysis and it is a low-level risk invasive test.In the urine analysis test, several components and properties of urine are investigated.",
+          "imageSrc": "/lab-tests/image-1732174372989-943948849.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d23",
+          "test": "671b5105ad9bf8d210384d30",
+          "id": "671b5259b96e79f0a315aead"
+        },
+        {
+          "title": "Lipid Profile",
+          "description": "A lipid profile is defined as a blood test which determines the level of several specific lipids in the blood. It is a very important test in the detection of risk for ischemic heart disease (IHD) such as risk factors.",
+          "imageSrc": "/lab-tests/image-1732174378237-827438702.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d23",
+          "test": "672de64ff06b4489abc3ead2",
+          "id": "6731ebca03598b92c151a53d"
+        },
+        {
+          "title": "Thyroid Stimulating Hormone(TSH)",
+          "description": "The Thyroid Stimulating Hormone (TSH) Test is a highly important blood test that aims to assess the functioning of the thyroid gland. The TSH test on the other hand measures the thyroid stimulating hormone or TSH in blood specifically.",
+          "imageSrc": "/lab-tests/image-1732174384134-715199331.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d24",
+          "test": "671c7d2fc8a77735c8e44117",
+          "id": "6734469703598b92c151abe9"
+        },
+        {
+          "title": "Liver Function Test(LFT)",
+          "description": "Liver Function Test (LFT) or the hepatic function panel blood tests are used to determine liver state or more than its state liver function. It checks for enzyme and protein levels and other biology substances synthesized or metabolized by the liver. ",
+          "imageSrc": "/lab-tests/image-1732174389939-761794209.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d28",
+          "test": "671c7c5ec8a77735c8e44105",
+          "id": "673479a403598b92c151afc5"
+        },
+        {
+          "title": "Thyroid Profile",
+          "description": "Thyroid profile check for hormones and proteins like antibodies and thyroglobulin. These tests can tell you if you have conditions like hypothyroidism (underactive thyroid) or hyperthyroidism (overactive thyroid). ",
+          "imageSrc": "/lab-tests/image-1732174397639-109393640.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d24",
+          "test": "671c7d88c8a77735c8e44120",
+          "id": "673479a403598b92c151afc6"
+        },
+        {
+          "title": "Glucose Fasting test",
+          "description": "Fasting blood sugar is a simple, common blood test to diagnose prediabetes, diabetes or gestational diabetes. Before the test, you shouldn't have anything to eat or drink (except water) for 8 to 12 hours.",
+          "imageSrc": "/lab-tests/image-1732174404503-5541235.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d23",
+          "test": "671c7cc7c8a77735c8e4410e",
+          "id": "673479a403598b92c151afc7"
+        }
+      ]
+    },
+    "multiTestSection": [
+      {
+        "title": "Blood Tests Available",
+        "testCatIds": "671b5104ad9bf8d210384d23",
+        "tests": [
+          "671b5105ad9bf8d210384d2f",
+          "671b5105ad9bf8d210384d30",
+          "671c7cc7c8a77735c8e4410e",
+          "671c7dd9c8a77735c8e44129",
+          "6720b1f4b61a968f2fc61587",
+          "672bab2e21cadfab64a6f854"
+        ],
+        "id": "671dfc1ffb1a59fbbd6f334d"
+      },
+      {
+        "title": "Gut Health Tests",
+        "testCatIds": "671b5104ad9bf8d210384d24",
+        "tests": [
+          "671c7d2fc8a77735c8e44117",
+          "671c7d88c8a77735c8e44120"
+        ],
+        "id": "671dfc1ffb1a59fbbd6f334e"
+      },
+      {
+        "title": "Liver Tests",
+        "testCatIds": "671b5104ad9bf8d210384d28",
+        "tests": [
+          "671c7c5ec8a77735c8e44105"
+        ],
+        "id": "671dfcf66f2c732d0511fee3"
+      }
+    ],
+    "features": [
+      {
+        "icon": "/lab-tests/image-1730005840955-200640618.webp",
+        "title": "Certified Labs",
+        "id": "671dfc1ffb1a59fbbd6f334f"
+      },
+      {
+        "icon": "/lab-tests/image-1730005867395-757505894.webp",
+        "title": "60 mins collection",
+        "id": "671dfc1ffb1a59fbbd6f3350"
+      },
+      {
+        "icon": "/lab-tests/image-1730005895185-390955399.webp",
+        "title": "Report in 6 hours",
+        "id": "671dfc1ffb1a59fbbd6f3351"
+      }
+    ],
+    "discountOffer": {
+      "content": {
+        "title": "Get 15% OFF* on orders above ₹500 ",
+        "code": "FESTIVE15"
+      }
+    },
+    "banner": [
+      "/lab-tests/image-1731915701176-803289818.webp",
+      "/lab-tests/image-1731915707294-51811708.webp",
+      "/lab-tests/image-1731915712740-381111487.webp",
+      "/lab-tests/image-1731923339913-940130808.webp"
+    ]
+  }
+]

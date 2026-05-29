@@ -1,0 +1,27 @@
+[
+  {
+    "id": "671b5107ad9bf8d210384d36",
+    "visible": true,
+    "content": {
+      "title": "Accurate Lab Tests at Your Convenience",
+      "subtitle": "Book your lab test with Cadabams Health Labs",
+      "buttonText": "Book Now",
+      "imageSrc": "/home/image-1728278877323-88585884.webp",
+      "buttons": [
+        {
+          "text": "Lab Test",
+          "href": "/labtest",
+          "icon": "/home/image-1728279190185-26974072.webp",
+          "id": "670375b4565dfd97f4257491"
+        },
+        {
+          "text": "Checkups",
+          "href": "/checkups",
+          "icon": "/home/image-1728279302038-278370801.webp",
+          "id": "670375b4565dfd97f4257492"
+        }
+      ],
+      "id": "670375b4565dfd97f4257490"
+    }
+  }
+]

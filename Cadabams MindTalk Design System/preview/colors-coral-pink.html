@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Colors — Coral & pink</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .swatch { aspect-ratio: 1.6; border-radius: 14px; display: flex; flex-direction: column; justify-content: flex-end; padding: 10px; box-shadow: var(--sh-1); }
+  .name { font-size: 11px; font-weight: 700; }
+  .hex { font-size: 10px; opacity: 0.75; font-family: var(--font-mono); }
+  h3 { margin: 0 0 6px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 12px; }
+  .grad-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .grad { height: 64px; border-radius: 14px; display: flex; align-items: flex-end; padding: 10px; color:#fff; font-size: 11px; font-weight: 700; box-shadow: var(--sh-2); }
+</style></head>
+<body>
+  <h3>Coral & pink — gradient hero accents</h3>
+  <p class="sub">Coral and pink only appear inside hero gradients (login Continue, Free Flow journal hero, home greeting) and as tints behind self-love / relationships content.</p>
+  <div class="row">
+    <div class="swatch" style="background:#FFD9DC;color:#6E2F08"><div class="name">pink-200</div><div class="hex">#FFD9DC</div></div>
+    <div class="swatch" style="background:#FBB7BC;color:#6E2F08"><div class="name">pink-300</div><div class="hex">#FBB7BC</div></div>
+    <div class="swatch" style="background:#F58F9A;color:#fff"><div class="name">pink-400</div><div class="hex">#F58F9A</div></div>
+    <div class="swatch" style="background:#FF9C8A;color:#fff"><div class="name">coral-300</div><div class="hex">#FF9C8A</div></div>
+    <div class="swatch" style="background:#F77268;color:#fff"><div class="name">coral-400</div><div class="hex">#F77268</div></div>
+  </div>
+  <div class="grad-row">
+    <div class="grad" style="background:linear-gradient(90deg,#F77268 0%,#F97316 100%)">gradient-cta · coral → orange</div>
+    <div class="grad" style="background:linear-gradient(135deg,#F58F9A 0%,#F77268 50%,#F97316 100%)">gradient-greeting · pink → coral → orange</div>
+  </div>
+</body></html>

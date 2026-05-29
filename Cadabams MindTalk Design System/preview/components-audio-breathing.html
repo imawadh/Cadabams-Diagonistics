@@ -1,0 +1,41 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Audio player & breathing</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--mt-cream-bg); font-family: var(--font-sans); }
+  h3 { margin: 0 0 4px; font-size: 13px; color: var(--fg1); font-weight: 700; }
+  .sub { font-size: 12px; color: var(--fg3); margin: 0 0 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .player { background: #fff; border-radius: 18px; padding: 18px; box-shadow: var(--sh-2); display: flex; flex-direction: column; align-items: center; }
+  .glyph-circle { width: 110px; height: 110px; border-radius: 999px; background: #E8F1FF; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; box-shadow: 0 4px 16px rgba(44,123,229,.18); }
+  .glyph-circle svg { width: 48px; height: 48px; stroke: #2C7BE5; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .ttl { font-size: 16px; font-weight: 800; color: #0E1726; }
+  .meta { font-size: 12px; color: var(--fg3); margin-top: 2px; }
+  .progress { width: 100%; height: 4px; background: #E2E5EA; border-radius: 999px; margin-top: 14px; position: relative; }
+  .progress .fill { width: 35%; height: 100%; background: #2C7BE5; border-radius: 999px; }
+  .progress .knob { position: absolute; left: 35%; top: -4px; width: 12px; height: 12px; border-radius: 999px; background: #2C7BE5; transform: translateX(-50%); }
+  .play { width: 56px; height: 56px; border-radius: 999px; background: #F97316; display: flex; align-items: center; justify-content: center; margin-top: 14px; box-shadow: 0 12px 24px rgba(249,115,22,.32); }
+  .play svg { width: 22px; height: 22px; fill: #fff; }
+  /* breathing */
+  .breath-bg { aspect-ratio: 1; background: radial-gradient(circle at 50% 50%, #F8C09A 0%, #FFE4D2 50%, #FFF4EC 80%, #FAF7F4 100%); border-radius: 18px; padding: 18px; box-shadow: var(--sh-2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+  .b-orb { width: 110px; height: 110px; border-radius: 999px; background: rgba(255,255,255,0.55); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 12px rgba(247,114,104,0.12), 0 0 0 26px rgba(247,114,104,0.06); }
+  .b-orb-inner { width: 64px; height: 64px; border-radius: 999px; background: #F8C09A; }
+</style></head>
+<body>
+  <h3>Audio player &amp; breathing orb</h3>
+  <p class="sub">Reflection player uses blue progress (Gratitude), blue glyph circle, orange play button. Breathing exercise is concentric peach orbs that scale with the breath.</p>
+  <div class="grid">
+    <div class="player">
+      <div class="glyph-circle"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg></div>
+      <div class="ttl">Gratitude</div>
+      <div class="meta">3 min focus</div>
+      <div class="progress"><div class="fill"></div><div class="knob"></div></div>
+      <button class="play" style="border:0;cursor:pointer"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" stroke="none"/></svg></button>
+    </div>
+    <div class="breath-bg">
+      <div class="b-orb"><div class="b-orb-inner"></div></div>
+      <div style="font-size:18px;font-weight:800;color:#0E1726">Inhale</div>
+      <div style="font-size:12px;color:var(--fg3)">Through your nose</div>
+    </div>
+  </div>
+</body></html>

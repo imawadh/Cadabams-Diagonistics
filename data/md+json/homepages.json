@@ -1,0 +1,195 @@
+[
+  {
+    "id": "671b5259b96e79f0a315aea8",
+    "visible": true,
+    "hero": {
+      "title": "Need a Blood test",
+      "subtitle": "CHOOSE THE FASTEST LAB",
+      "imageSrc": "/home/image-1731920519198-101162377.webp",
+      "buttons": [
+        {
+          "text": "Labtest",
+          "href": "/bangalore/lab-test",
+          "icon": "/home/image-1729838534546-659544236.webp",
+          "id": "671b5259b96e79f0a315aea9"
+        },
+        {
+          "text": "Radiology",
+          "href": "bangalore/mri-scan",
+          "icon": "/home/image-1729838577366-954403842.webp",
+          "id": "671b5259b96e79f0a315aeaa"
+        }
+      ]
+    },
+    "test_card": {
+      "title": "Vital Health Tests",
+      "testCatIds": [
+        "671b5104ad9bf8d210384d23",
+        "671b5104ad9bf8d210384d24",
+        "671b5104ad9bf8d210384d29",
+        "671b5104ad9bf8d210384d2a",
+        "671b5104ad9bf8d210384d27",
+        "671b5104ad9bf8d210384d25",
+        "671b5104ad9bf8d210384d28"
+      ],
+      "tests": [
+        "671b5105ad9bf8d210384d2f",
+        "671b5105ad9bf8d210384d30",
+        "671c7dd9c8a77735c8e44129",
+        "671c7d2fc8a77735c8e44117"
+      ]
+    },
+    "vitalOrgans": [
+      {
+        "title": "For Vital Body Organs",
+        "description": "Explore our comprehensive range of diagnostic tests tailored for vital body organs and systems. Our specialized diagnostic tests focus on evaluating the well-being of essential body functions, ensuring you receive the care you deserve.",
+        "all_test_categories": [
+          "671b5102ad9bf8d210384d19",
+          "671b5102ad9bf8d210384d1a",
+          "671b5102ad9bf8d210384d1b",
+          "671b5102ad9bf8d210384d1e",
+          "671b5102ad9bf8d210384d1f",
+          "671b5102ad9bf8d210384d1c"
+        ],
+        "id": "671b5259b96e79f0a315aeab"
+      }
+    ],
+    "mostBookedCheckups": {
+      "title": "We specialise in Radiology",
+      "description": "Bangalore's most advanced radiology machines and outputs.",
+      "viewAllCheckup": "/non-labtest",
+      "checkups": [
+        {
+          "title": "Fetal ultrasound",
+          "icon": "/home/image-1732255281476-709224322.webp",
+          "catid": "671b5102ad9bf8d210384d1e",
+          "href": "67371c29996e7737b6f4de55",
+          "id": "67383fdb71a5aadf0dff512b"
+        },
+        {
+          "title": "Brain MRI",
+          "icon": "/home/image-1732255322636-631996327.webp",
+          "catid": "671b5102ad9bf8d210384d1a",
+          "href": "6735d7ca03598b92c151c932",
+          "id": "67383fdb71a5aadf0dff512c"
+        },
+        {
+          "title": "CT-Abdomen",
+          "icon": "/home/image-1732255598531-832126692.webp",
+          "catid": "671b5102ad9bf8d210384d1b",
+          "href": "6735d37103598b92c151c90e",
+          "id": "67383fdb71a5aadf0dff512d"
+        },
+        {
+          "title": "Hand X-ray",
+          "icon": "/home/image-1732255413036-642273703.webp",
+          "catid": "671b5102ad9bf8d210384d19",
+          "href": "6735b38f03598b92c151c546",
+          "id": "67383fdb71a5aadf0dff512e"
+        },
+        {
+          "title": "Fetal Imaging",
+          "icon": "/home/image-1732255445038-91379191.webp",
+          "catid": "671b5102ad9bf8d210384d1e",
+          "href": "6736e2f403598b92c151cdc2",
+          "id": "67383fdb71a5aadf0dff512f"
+        },
+        {
+          "title": "Abdomen & Pelvis scan",
+          "icon": "/home/image-1732255649442-266460905.webp",
+          "catid": "671b5102ad9bf8d210384d1c",
+          "href": "673c56c5effae454707dfe68",
+          "id": "67383fdb71a5aadf0dff5130"
+        }
+      ]
+    },
+    "healthMonitoring": {
+      "content": [
+        {
+          "title": "Urine Analysis",
+          "description": "Urine analysis is also known as urinalysis and it is a low-level risk invasive test.In the urine analysis test, several components and properties of urine are investigated.",
+          "imageSrc": "/home/image-1732165774286-810352647.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d23",
+          "test": "671b5105ad9bf8d210384d30",
+          "id": "671b5259b96e79f0a315aead"
+        },
+        {
+          "title": "Lipid Profile",
+          "description": "A lipid profile is defined as a blood test which determines the level of several specific lipids in the blood. It is a very important test in the detection of risk for ischemic heart disease (IHD) such as risk factors.",
+          "imageSrc": "/home/image-1732165782196-565994680.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d23",
+          "test": "672de64ff06b4489abc3ead2",
+          "id": "6731ebca03598b92c151a53d"
+        },
+        {
+          "title": "Thyroid Stimulating Hormone(TSH)",
+          "description": "The Thyroid Stimulating Hormone (TSH) Test is a highly important blood test that aims to assess the functioning of the thyroid gland. The TSH test on the other hand measures the thyroid stimulating hormone or TSH in blood specifically.",
+          "imageSrc": "/home/image-1732165789174-45044587.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d24",
+          "test": "671c7d2fc8a77735c8e44117",
+          "id": "6734469703598b92c151abe9"
+        },
+        {
+          "title": "Liver Function Test(LFT)",
+          "description": "Liver Function Test (LFT) or the hepatic function panel blood tests are used to determine liver state or more than its state liver function. It checks for enzyme and protein levels and other biology substances synthesized or metabolized by the liver. ",
+          "imageSrc": "/home/image-1732165795264-286121739.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d28",
+          "test": "671c7c5ec8a77735c8e44105",
+          "id": "673479a403598b92c151afc5"
+        },
+        {
+          "title": "Thyroid Profile",
+          "description": "Thyroid profile check for hormones and proteins like antibodies and thyroglobulin. These tests can tell you if you have conditions like hypothyroidism (underactive thyroid) or hyperthyroidism (overactive thyroid). ",
+          "imageSrc": "/home/image-1732165801083-460058969.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d24",
+          "test": "671c7d88c8a77735c8e44120",
+          "id": "673479a403598b92c151afc6"
+        },
+        {
+          "title": "Glucose Fasting test",
+          "description": "Fasting blood sugar is a simple, common blood test to diagnose prediabetes, diabetes or gestational diabetes. Before the test, you shouldn't have anything to eat or drink (except water) for 8 to 12 hours.",
+          "imageSrc": "/home/image-1732165805601-370002142.webp",
+          "trustedBy": "10000+ customers",
+          "testCatId": "671b5104ad9bf8d210384d23",
+          "test": "671c7cc7c8a77735c8e4410e",
+          "id": "673479a403598b92c151afc7"
+        }
+      ]
+    },
+    "features": [
+      {
+        "icon": "/home/image-1729839690061-666204063.webp",
+        "title": "Certified Labs",
+        "id": "671b5259b96e79f0a315aeae"
+      },
+      {
+        "icon": "/home/image-1729839798187-636138092.webp",
+        "title": "Report in 6 hours",
+        "id": "671b5259b96e79f0a315aeaf"
+      },
+      {
+        "icon": "/home/image-1729839748866-456387654.webp",
+        "title": "6am - 9pm",
+        "id": "671b5259b96e79f0a315aeb0"
+      }
+    ],
+    "discountOffer": {
+      "content": {
+        "title": "Get 15% OFF* on orders above ₹500",
+        "code": "CADABAM15"
+      }
+    },
+    "banner": [
+      "/home/image-1731322202356-745504588.webp",
+      "/home/image-1731322208631-864247789.webp",
+      "/home/image-1731322213608-707802914.webp",
+      "/home/image-1731322218967-440194828.webp",
+      "/home/image-1731916276929-165930267.webp"
+    ]
+  }
+]
