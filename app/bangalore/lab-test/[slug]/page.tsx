@@ -7,9 +7,9 @@ import {
   FlaskConical,
   ShieldCheck,
   Tag,
-  CheckCircle2,
   Home as HomeIcon,
   Zap,
+  ShoppingCart,
 } from "lucide-react";
 import {
   getAllLabTestSlugs,
@@ -24,7 +24,9 @@ import { stripLeadingSlash } from "@/lib/data/types";
 import { MarkdownContent } from "@/components/shared/MarkdownContent";
 import { TestCard } from "@/components/shared/TestCard";
 import { TestBookingActions } from "@/components/shared/TestBookingActions";
-import { SectionOverline } from "@/components/shared/SectionOverline";
+import { LabStats } from "@/components/shared/LabStats";
+import { CentersListCard } from "@/components/shared/CentersListCard";
+import { getAllCenters, getCenterSlug } from "@/lib/data/centers";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -39,6 +41,40 @@ export const revalidate = 86400;
 
 const CITY = "bangalore";
 const FALLBACK_IMAGE = "/shared/image-1727884059139-383535423.webp";
+
+interface MarkdownSection {
+  title: string;
+  body: string;
+}
+
+function splitMarkdownByH2(markdown: string): MarkdownSection[] {
+  if (!markdown || markdown.trim().length === 0) return [];
+  const lines = markdown.split(/\r?\n/);
+  const sections: MarkdownSection[] = [];
+  let current: MarkdownSection | null = null;
+  let preamble: string[] = [];
+
+  for (const line of lines) {
+    const h2Match = line.match(/^##\s+(.+?)\s*$/);
+    if (h2Match) {
+      if (current) sections.push(current);
+      current = { title: h2Match[1].trim(), body: "" };
+    } else if (current) {
+      current.body += (current.body ? "\n" : "") + line;
+    } else {
+      preamble.push(line);
+    }
+  }
+  if (current) sections.push(current);
+
+  const preambleText = preamble.join("\n").trim();
+  if (preambleText.length > 0) {
+    sections.unshift({ title: "Overview", body: preambleText });
+  }
+  return sections
+    .map((s) => ({ title: s.title, body: s.body.trim() }))
+    .filter((s) => s.body.length > 0 || s.title.length > 0);
+}
 
 export async function generateStaticParams() {
   return getAllLabTestSlugs().map((slug) => ({ slug }));
@@ -101,11 +137,17 @@ export default async function LabTestDetailPage({ params }: PageProps) {
       )
     : [];
 
+  const sidebarCenters = getAllCenters()
+    .filter((c) => c.basic_info?.center_name?.trim().length > 0)
+    .map((c) => ({
+      name: c.basic_info.center_name.trim(),
+      slug: getCenterSlug(c),
+    }));
+
   const hasInterpretations =
     test.interpretations?.rows && test.interpretations.rows.length > 0;
-  const hasRequisites =
-    test.requisites?.some((r) => r.value && r.value.trim().length > 0) ?? false;
   const hasFaqs = test.faqs && test.faqs.length > 0;
+  const markdownSections = splitMarkdownByH2(test.markdown ?? "");
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -218,6 +260,23 @@ export default async function LabTestDetailPage({ params }: PageProps) {
                   </span>
                 )}
               </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 pt-3">
+                <Link
+                  href="/cart"
+                  className="inline-flex items-center justify-center gap-2 rounded-pill bg-orange-50 hover:bg-orange-100 text-orange-700 font-semibold px-6 py-3 text-body border-2 border-orange-200 hover:border-orange-300 transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-200"
+                >
+                  <ShoppingCart className="w-4 h-4" />
+                  Add to cart
+                </Link>
+                <Link
+                  href="/cart"
+                  className="inline-flex items-center justify-center gap-2 rounded-pill bg-gradient-cta text-white font-bold px-6 py-3 text-body shadow-glow-orange ring-2 ring-orange-300/30 hover:brightness-110 hover:-translate-y-0.5 hover:ring-orange-400/50 active:scale-[0.98] transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-300"
+                >
+                  <Zap className="w-4 h-4 fill-white" />
+                  Book now · ₹{finalPrice.toLocaleString("en-IN")}
+                </Link>
+              </div>
             </div>
 
             <div className="relative">
@@ -264,13 +323,16 @@ export default async function LabTestDetailPage({ params }: PageProps) {
         </div>
       </section>
 
+      <div className="mx-auto max-w-7xl px-gutter pt-8 lg:pt-10">
+        <LabStats />
+      </div>
+
       <div className="mx-auto max-w-7xl px-gutter py-10 lg:py-14 grid gap-6 lg:gap-10 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6">
           {(test.basic_info.Identifies || test.basic_info.measures) && (
             <section className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-6 sm:p-8">
-              <SectionOverline>About this test</SectionOverline>
-              <h2 className="text-h2 font-bold text-ink-900 mt-1 mb-5">
-                What it tells you
+              <h2 className="text-h2 font-display font-bold text-ink-900 mb-5">
+                About The Test
               </h2>
               <div className="grid sm:grid-cols-2 gap-5">
                 {test.basic_info.Identifies && (
@@ -297,40 +359,28 @@ export default async function LabTestDetailPage({ params }: PageProps) {
             </section>
           )}
 
-          {hasRequisites && (
-            <section className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-6 sm:p-8">
-              <SectionOverline>Preparation</SectionOverline>
-              <h2 className="text-h2 font-bold text-ink-900 mt-1 mb-4">
-                Before your test
+          {markdownSections.map((section, i) => (
+            <section
+              key={`md-section-${i}`}
+              className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-6 sm:p-8"
+            >
+              <h2 className="text-h2 font-display font-bold text-ink-900 mb-4">
+                {section.title}
               </h2>
-              <ul className="space-y-3">
-                {test.requisites
-                  .filter((r) => r.value && r.value.trim().length > 0)
-                  .map((r, i) => (
-                    <li
-                      key={i}
-                      className="flex gap-3 text-body text-ink-700 leading-relaxed"
-                    >
-                      <CheckCircle2 className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
-                      <span>{r.value.trim()}</span>
-                    </li>
-                  ))}
-              </ul>
+              <MarkdownContent content={section.body} />
             </section>
-          )}
-
-          {test.markdown && test.markdown.trim().length > 0 && (
-            <section className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-6 sm:p-8">
-              <MarkdownContent content={test.markdown} />
-            </section>
-          )}
+          ))}
 
           {hasInterpretations && (
             <section className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-6 sm:p-8">
-              <SectionOverline>Results</SectionOverline>
-              <h2 className="text-h2 font-bold text-ink-900 mt-1 mb-4">
-                {test.interpretations.title || "How to read your results"}
+              <h2 className="text-h2 font-display font-bold text-ink-900 mb-4">
+                Test Results
               </h2>
+              {test.interpretations.title && (
+                <p className="text-body-sm text-ink-600 mb-4">
+                  {test.interpretations.title}
+                </p>
+              )}
               <div className="overflow-x-auto rounded-md border border-cream-line">
                 <table className="w-full border-collapse">
                   <thead>
@@ -368,10 +418,9 @@ export default async function LabTestDetailPage({ params }: PageProps) {
           )}
 
           {hasFaqs && (
-            <section>
-              <SectionOverline>FAQ</SectionOverline>
-              <h2 className="text-h2 font-bold text-ink-900 mt-1 mb-5">
-                Frequently asked questions
+            <section className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-6 sm:p-8">
+              <h2 className="text-h2 font-display font-bold text-ink-900 mb-5">
+                FAQs
               </h2>
               <FaqList items={test.faqs} idPrefix="labtest-faq" />
             </section>
@@ -379,9 +428,8 @@ export default async function LabTestDetailPage({ params }: PageProps) {
 
           {relatedTests.length > 0 && (
             <section>
-              <SectionOverline>Related tests</SectionOverline>
-              <h2 className="text-h2 font-bold text-ink-900 mt-1 mb-5">
-                You may also need
+              <h2 className="text-h2 font-display font-bold text-ink-900 mb-5">
+                Related Tests
               </h2>
               <div className="grid sm:grid-cols-2 gap-5">
                 {relatedTests.slice(0, 4).map((t) => {
@@ -408,7 +456,8 @@ export default async function LabTestDetailPage({ params }: PageProps) {
         </div>
 
         <aside className="lg:col-span-1">
-          <div className="lg:sticky lg:top-24 bg-cream-card rounded-2xl shadow-sh-3 border border-cream-line overflow-hidden">
+          <div className="lg:sticky lg:top-24 space-y-6">
+          <div className="bg-cream-card rounded-2xl shadow-sh-3 border border-cream-line overflow-hidden">
             <div className="bg-gradient-orange-soft p-5 border-b border-cream-line">
               <p className="text-overline uppercase text-orange-700 font-bold tracking-overline">
                 Book this test
@@ -457,6 +506,9 @@ export default async function LabTestDetailPage({ params }: PageProps) {
                 finalPrice={finalPrice}
               />
             </div>
+          </div>
+
+          <CentersListCard centers={sidebarCenters} />
           </div>
         </aside>
       </div>

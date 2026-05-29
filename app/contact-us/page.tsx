@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { StaticPageShell } from "@/components/shared/StaticPageShell";
 import { ContactFormSection } from "@/components/home/ContactFormSection";
+import { ContactActionButton } from "@/components/shared/ContactActionButton";
 import { getAllCenters } from "@/lib/data/centers";
 import { getNavbar } from "@/lib/data/navbars";
 
@@ -49,12 +50,14 @@ export default function ContactUsPage() {
                   {phone && (
                     <p>
                       <span className="text-ink-500">Phone: </span>
-                      <a
-                        href={`tel:${phone.replace(/\s+/g, "")}`}
+                      <ContactActionButton
+                        mode="call"
+                        phone={phone}
+                        context={c.basic_info.center_name}
                         className="text-orange-600 hover:text-orange-700 font-semibold"
                       >
                         {phone}
-                      </a>
+                      </ContactActionButton>
                     </p>
                   )}
                   {c.center_info.email && (

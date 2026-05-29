@@ -4,6 +4,7 @@ import { useState, FormEvent } from "react";
 import Image from "next/image";
 import { Check, Phone, Mail, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ContactActionButton } from "@/components/shared/ContactActionButton";
 
 interface ContactFormSectionProps {
   logo: string;
@@ -93,12 +94,13 @@ export function ContactFormSection({
                 <span className="w-9 h-9 rounded-pill bg-orange-50 text-orange-600 inline-flex items-center justify-center flex-shrink-0">
                   <Phone className="w-4 h-4" />
                 </span>
-                <a
-                  href={`tel:${phone.replace(/\s+/g, "")}`}
-                  className="text-ink-900 hover:text-orange-600 transition-colors font-medium"
+                <ContactActionButton
+                  mode="call"
+                  phone={phone}
+                  className="text-left text-ink-900 hover:text-orange-600 transition-colors font-medium"
                 >
                   {phone}
-                </a>
+                </ContactActionButton>
               </li>
             )}
             {email && (

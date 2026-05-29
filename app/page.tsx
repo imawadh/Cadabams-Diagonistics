@@ -33,14 +33,15 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title:
-    "Cadabams Diagnostics — Accurate lab tests & scans in Bangalore",
+    "Cadabam's Diagnostics | Best Diagnostic Center in Bangalore",
   description:
-    "Book lab tests, MRI/CT/X-ray scans, and health checkups in Bangalore. Reports in 6 hours. Certified labs. Home sample collection.",
+    "Cadabam's Diagnostics offers comprehensive diagnostic services including blood tests, scans, and health checkups. Book your diagnostic tests online or get home sample collection in Bangalore.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Cadabams Diagnostics",
+    title:
+      "Cadabam's Diagnostics | Best Diagnostic Center in Bangalore",
     description:
-      "Trusted lab tests, radiology, and health checkups across Bangalore.",
+      "Cadabam's Diagnostics offers comprehensive diagnostic services including blood tests, scans, and health checkups. Book your diagnostic tests online or get home sample collection in Bangalore.",
     url: "/",
     type: "website",
   },

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import {
   getAllBlogSlugs,
@@ -8,10 +7,11 @@ import {
   getBlogsByCategoryId,
   getRecentBlogs,
 } from "@/lib/data/blogs";
+import { getAllCenters, getCenterSlug } from "@/lib/data/centers";
 import { blogUrl } from "@/lib/urls";
 import { MarkdownContent } from "@/components/shared/MarkdownContent";
 import { BlogCard } from "@/components/shared/BlogCard";
-import { SectionOverline } from "@/components/shared/SectionOverline";
+import { BlogSidebar } from "@/components/shared/BlogSidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -20,17 +20,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Calendar, UserCheck } from "lucide-react";
+import { FaqList } from "@/components/shared/FaqList";
+import { Calendar, Home } from "lucide-react";
 
 export const revalidate = 86400;
-
-const FALLBACK = "/shared/image-1727884059139-383535423.webp";
 
 const DATE_FMT = new Intl.DateTimeFormat("en-IN", {
   day: "numeric",
@@ -64,7 +57,8 @@ export async function generateMetadata({
     alternates: { canonical },
     openGraph: {
       title: blog.seo?.ogTitle || blog.seo?.title || blog.title,
-      description: blog.seo?.ogDescription || blog.seo?.description || fallbackDesc,
+      description:
+        blog.seo?.ogDescription || blog.seo?.description || fallbackDesc,
       images: blog.imageUrl ? [{ url: blog.imageUrl }] : undefined,
       type: "article",
       publishedTime: blog.createdAt,
@@ -85,20 +79,29 @@ export default async function BlogDetailPage({ params }: PageProps) {
   const fallback =
     related.length > 0
       ? related
-      : getRecentBlogs(4).filter((b) => b.id !== blog.id).slice(0, 3);
+      : getRecentBlogs(4)
+          .filter((b) => b.id !== blog.id)
+          .slice(0, 3);
 
-  const src = blog.imageUrl && blog.imageUrl.length > 0 ? blog.imageUrl : FALLBACK;
+  const hasImage = !!blog.imageUrl && blog.imageUrl.length > 0;
   const published = (() => {
     const d = new Date(blog.createdAt);
     return Number.isNaN(d.getTime()) ? "" : DATE_FMT.format(d);
   })();
+
+  const sidebarCenters = getAllCenters()
+    .filter((c) => c.basic_info?.center_name?.trim().length > 0)
+    .map((c) => ({
+      name: c.basic_info.center_name.trim(),
+      slug: getCenterSlug(c),
+    }));
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: blog.title,
     description: blog.seo?.description,
-    image: src,
+    image: hasImage ? blog.imageUrl : undefined,
     author: {
       "@type": "Person",
       name: blog.verifiedBy || "Cadabam's Diagnostics",
@@ -118,103 +121,100 @@ export default async function BlogDetailPage({ params }: PageProps) {
 
   return (
     <main className="bg-cream-bg min-h-screen">
-      <div className="mx-auto max-w-4xl px-gutter py-6 lg:py-8">
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/blogs">Blogs</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="line-clamp-1 max-w-xs">
-                {blog.title}
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-      </div>
+      <section className="relative overflow-hidden bg-gradient-orange-soft">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-20 -right-20 w-80 h-80 rounded-pill bg-orange-300/30 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-32 -left-10 w-96 h-96 rounded-pill bg-coral-300/20 blur-3xl"
+        />
+        <div className="relative mx-auto max-w-7xl px-gutter pt-6 pb-8 lg:pt-8 lg:pb-12">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/" className="inline-flex items-center gap-1">
+                  <Home className="w-3.5 h-3.5" />
+                  Home
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/blogs">Blog</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage className="line-clamp-1 max-w-md">
+                  {blog.title}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
 
-      <article className="mx-auto max-w-4xl px-gutter pb-12 lg:pb-16">
-        <header className="mb-8">
-          <Link
-            href="/blogs"
-            className="text-overline uppercase text-orange-600 font-bold hover:text-orange-700 transition-colors"
-          >
-            {blog.categoryName}
-          </Link>
-          <h1 className="text-display-2 sm:text-display-1 font-display font-extrabold text-ink-900 mt-3 leading-tight">
-            {blog.title}
-          </h1>
-          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-body-sm text-ink-600">
-            {blog.verifiedBy && (
-              <span className="inline-flex items-center gap-1.5">
-                <UserCheck className="w-4 h-4 text-orange-600" />
-                Reviewed by{" "}
-                <span className="font-semibold text-ink-900">
-                  {blog.verifiedBy}
-                </span>
-              </span>
-            )}
+          <div className="mt-6 max-w-4xl">
+            <Link
+              href={`/blogs?category=${blog.blogCategoryId}`}
+              className="inline-flex items-center rounded-pill bg-cream-card border border-orange-100 text-orange-700 font-bold text-overline uppercase px-3 py-1 tracking-overline hover:border-orange-200 transition-colors"
+            >
+              {blog.categoryName}
+            </Link>
+            <h1 className="mt-4 text-h1 sm:text-display-2 lg:text-display-1 font-display font-extrabold text-ink-900 leading-tight tracking-tight">
+              {blog.title}
+            </h1>
             {published && (
-              <span className="inline-flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-orange-600" />
-                <time dateTime={blog.createdAt}>{published}</time>
-              </span>
+              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-body-sm text-ink-600">
+                <span className="inline-flex items-center gap-1.5">
+                  <Calendar className="w-4 h-4 text-orange-600" />
+                  <time dateTime={blog.createdAt}>{published}</time>
+                </span>
+              </div>
             )}
           </div>
-        </header>
-
-        {blog.imageUrl && blog.imageUrl.length > 0 && (
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-sh-2 mb-8">
-            <Image
-              src={src}
-              alt={blog.title}
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 800px"
-            />
-          </div>
-        )}
-
-        <div className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-6 sm:p-10">
-          <MarkdownContent content={blog.markdown} />
         </div>
+      </section>
 
-        {blog.faqs && blog.faqs.length > 0 && (
-          <section className="mt-8 bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-6 sm:p-10">
-            <SectionOverline>FAQ</SectionOverline>
-            <h2 className="text-h2 font-bold text-ink-900 mt-1 mb-4">
-              Frequently asked questions
-            </h2>
-            <Accordion type="single" collapsible>
-              {blog.faqs.map((f, i) => (
-                <AccordionItem key={i} value={`blog-faq-${i}`}>
-                  <AccordionTrigger className="text-left text-body font-semibold text-ink-900 hover:text-orange-600 hover:no-underline">
-                    {f.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-body-sm text-ink-600 leading-relaxed">
-                    {f.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </section>
-        )}
-      </article>
+      <div className="mx-auto max-w-7xl px-gutter py-10 lg:py-14 grid gap-6 lg:gap-10 lg:grid-cols-3">
+        <article className="lg:col-span-2 space-y-6">
+          {hasImage && (
+            <div className="rounded-2xl overflow-hidden shadow-sh-2 border border-cream-line bg-cream-soft">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={blog.imageUrl}
+                alt={blog.title}
+                className="w-full h-auto block"
+              />
+            </div>
+          )}
+
+          <div className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-6 sm:p-8 lg:p-10">
+            <MarkdownContent content={blog.markdown} />
+          </div>
+
+          {blog.faqs && blog.faqs.length > 0 && (
+            <section className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-6 sm:p-8">
+              <h2 className="text-h2 font-display font-bold text-ink-900 mb-5">
+                FAQs
+              </h2>
+              <FaqList items={blog.faqs} idPrefix="blog-faq" />
+            </section>
+          )}
+        </article>
+
+        <aside className="lg:col-span-1">
+          <div className="lg:sticky lg:top-24">
+            <BlogSidebar centers={sidebarCenters} />
+          </div>
+        </aside>
+      </div>
 
       {fallback.length > 0 && (
         <section className="bg-cream-soft py-12 lg:py-16">
           <div className="mx-auto max-w-7xl px-gutter">
-            <SectionOverline>Keep reading</SectionOverline>
-            <h2 className="text-h1 sm:text-display-2 font-display text-ink-900 mt-1 mb-8">
+            <h2 className="text-h1 sm:text-display-2 font-display font-extrabold text-ink-900 mb-8 tracking-tight">
               Related articles
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
               {fallback.map((b) => (
                 <BlogCard key={b.id} blog={b} />
               ))}

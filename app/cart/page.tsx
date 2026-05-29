@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { ShoppingCart, Phone } from "lucide-react";
 import { CTAButton } from "@/components/shared/CTAButton";
+import { ContactActionButton } from "@/components/shared/ContactActionButton";
 
 export default function CartPage() {
   return (
@@ -32,13 +32,14 @@ export default function CartPage() {
           <p className="text-body-sm text-ink-700">
             Prefer to talk to a person?
           </p>
-          <Link
-            href="tel:+919900664696"
+          <ContactActionButton
+            mode="call"
+            phone="+919900664696"
             className="mt-2 inline-flex items-center justify-center gap-2 text-h3 font-bold text-orange-600 hover:text-orange-700 transition-colors"
           >
             <Phone className="w-5 h-5" />
             +91 99006 64696
-          </Link>
+          </ContactActionButton>
         </div>
       </section>
     </main>

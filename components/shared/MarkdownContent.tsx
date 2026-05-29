@@ -8,6 +8,30 @@ interface MarkdownContentProps {
 }
 
 /**
+ * Some lab-test entries in labtests.json were authored elsewhere and got
+ * imported with markdown-active characters backslash-escaped (e.g. `\*\*Bold\*\*`
+ * instead of `**Bold**`, `\* item` instead of `* item`). ReactMarkdown correctly
+ * renders those as literal characters, so headings/lists/bold never appear.
+ * This unescapes the common markdown syntax characters so the data renders as
+ * intended without editing the source files.
+ */
+function unescapeMarkdown(input: string): string {
+  return input.replace(/\\([*_`#\[\]()>~|-])/g, "$1");
+}
+
+/**
+ * Some imported blogs link to fully-qualified `https://cadabamsdiagnostics.com/...`
+ * URLs. Rewrite those to in-site relative paths so navigation stays internal
+ * (preserves SPA-style transitions and works in local dev / staging).
+ */
+function rewriteInternalLinks(input: string): string {
+  return input.replace(
+    /(\]\()https?:\/\/(?:www\.)?cadabamsdiagnostics\.com(\/[^\s)]*)?\)/gi,
+    (_m, open, path) => `${open}${path || "/"})`,
+  );
+}
+
+/**
  * Styled markdown renderer for blog/test/center detail pages.
  * Uses arbitrary selectors instead of @tailwindcss/typography to keep
  * the dependency surface small and the styling consistent with our tokens.
@@ -39,7 +63,9 @@ export function MarkdownContent({ content, className }: MarkdownContentProps) {
         className,
       )}
     >
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {rewriteInternalLinks(unescapeMarkdown(content))}
+      </ReactMarkdown>
     </div>
   );
 }

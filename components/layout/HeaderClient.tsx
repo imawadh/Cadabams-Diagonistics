@@ -18,6 +18,7 @@ import {
   X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ContactActionButton } from "@/components/shared/ContactActionButton";
 
 interface NavItem {
   name: string;
@@ -384,12 +385,13 @@ export function HeaderClient({
           </Link>
           <p className="mt-3 text-caption text-ink-500 text-center">
             Need help? Call{" "}
-            <a
-              href="tel:+919900664696"
-              className="text-orange-600 font-semibold"
+            <ContactActionButton
+              mode="call"
+              phone="+919900664696"
+              className="text-orange-600 font-semibold underline-offset-2 hover:underline"
             >
               +91 99006 64696
-            </a>
+            </ContactActionButton>
           </p>
         </div>
       </aside>
