@@ -375,7 +375,7 @@ export function ScanListing({ familyPath, searchParams }: ScanListingProps) {
                             ? price
                             : undefined
                         }
-                        reportTime={test.basic_info.reportsWithin}
+                        reportTime={isMeaningfulText(test.basic_info.reportsWithin, 3) ? test.basic_info.reportsWithin : undefined}
                         href={nonLabTestUrl(test)}
                       />
                     );
