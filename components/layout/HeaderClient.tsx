@@ -11,7 +11,6 @@ import {
   ChevronDown,
   ChevronRight,
   FlaskConical,
-  LogIn,
   Menu,
   Search,
   ShoppingCart,
@@ -236,10 +235,9 @@ export function HeaderClient({
 
               <Link
                 href="/login"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-pill bg-orange-500 text-white text-body-sm font-semibold shadow-glow-orange hover:bg-orange-600 transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+                className="inline-flex items-center px-5 py-2 rounded-pill bg-orange-500 text-white text-body-sm font-semibold shadow-glow-orange hover:bg-orange-600 transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
               >
-                <LogIn className="w-4 h-4" />
-                <span>Login</span>
+                Login
               </Link>
             </nav>
 
@@ -378,10 +376,16 @@ export function HeaderClient({
           <Link
             href="/login"
             onClick={() => setMobileOpen(false)}
-            className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-pill bg-gradient-cta text-white font-semibold shadow-glow-orange hover:brightness-110 active:scale-[0.98] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+            className="w-full inline-flex items-center justify-center px-4 py-3 rounded-pill bg-gradient-cta text-white font-semibold shadow-glow-orange hover:brightness-110 active:scale-[0.98] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
           >
-            <LogIn className="w-5 h-5" />
-            <span>Login</span>
+            Login
+          </Link>
+          <Link
+            href="/signup"
+            onClick={() => setMobileOpen(false)}
+            className="mt-3 w-full inline-flex items-center justify-center px-4 py-3 rounded-pill bg-orange-50 hover:bg-orange-100 text-orange-700 font-semibold border-2 border-orange-200 hover:border-orange-300 active:scale-[0.98] transition-all duration-200"
+          >
+            Create account
           </Link>
           <p className="mt-3 text-caption text-ink-500 text-center">
             Need help? Call{" "}
