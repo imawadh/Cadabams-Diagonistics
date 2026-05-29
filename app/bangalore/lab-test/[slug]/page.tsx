@@ -27,6 +27,7 @@ import { TestBookingActions } from "@/components/shared/TestBookingActions";
 import { LabStats } from "@/components/shared/LabStats";
 import { CentersListCard } from "@/components/shared/CentersListCard";
 import { getAllCenters, getCenterSlug } from "@/lib/data/centers";
+import { isMeaningfulText } from "@/lib/data/meaningful";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -133,7 +134,7 @@ export default async function LabTestDetailPage({ params }: PageProps) {
 
   const relatedTests = test.relative_test?.tests
     ? getLabTestsByIds(test.relative_test.tests.map((t) => t.id)).filter(
-        (t) => t.id !== test.id,
+        (t) => t.id !== test.id && isMeaningfulText(t.testName, 3),
       )
     : [];
 
@@ -144,9 +145,32 @@ export default async function LabTestDetailPage({ params }: PageProps) {
       slug: getCenterSlug(c),
     }));
 
+  const validIdentifies = isMeaningfulText(test.basic_info.Identifies, 6)
+    ? test.basic_info.Identifies.trim()
+    : null;
+  const validMeasures = isMeaningfulText(test.basic_info.measures, 6)
+    ? test.basic_info.measures.trim()
+    : null;
+  const validReportsWithin = isMeaningfulText(test.basic_info.reportsWithin, 3)
+    ? test.basic_info.reportsWithin.trim()
+    : null;
+  const validTestId =
+    test.basic_info.testId &&
+    /^\d{4,}$/.test(String(test.basic_info.testId))
+      ? String(test.basic_info.testId)
+      : null;
+
   const hasInterpretations =
-    test.interpretations?.rows && test.interpretations.rows.length > 0;
-  const hasFaqs = test.faqs && test.faqs.length > 0;
+    test.interpretations?.rows &&
+    test.interpretations.rows.length > 0 &&
+    test.interpretations.rows.some((row) =>
+      row.some((cell) => isMeaningfulText(cell, 4)),
+    );
+  const faqs = (test.faqs ?? []).filter(
+    (f) =>
+      isMeaningfulText(f.question, 8) && isMeaningfulText(f.answer, 8),
+  );
+  const hasFaqs = faqs.length > 0;
   const markdownSections = splitMarkdownByH2(test.markdown ?? "");
 
   const jsonLd = {
@@ -232,17 +256,17 @@ export default async function LabTestDetailPage({ params }: PageProps) {
                 {test.testName}
               </h1>
 
-              {test.basic_info.Identifies && (
+              {validIdentifies && (
                 <p className="text-body-sm sm:text-body lg:text-h3 text-ink-700 leading-relaxed max-w-2xl">
-                  {test.basic_info.Identifies}
+                  {validIdentifies}
                 </p>
               )}
 
               <div className="flex flex-wrap items-center gap-2 pt-1">
-                {test.basic_info.reportsWithin && (
+                {validReportsWithin && (
                   <span className="inline-flex items-center gap-1.5 bg-cream-card rounded-pill px-3 py-1.5 text-meta font-semibold text-ink-700 shadow-sh-1 border border-cream-line">
                     <Clock className="w-3.5 h-3.5 text-orange-600" />
-                    Reports in {test.basic_info.reportsWithin}
+                    Reports in {validReportsWithin}
                   </span>
                 )}
                 <span className="inline-flex items-center gap-1.5 bg-cream-card rounded-pill px-3 py-1.5 text-meta font-semibold text-ink-700 shadow-sh-1 border border-cream-line">
@@ -253,10 +277,10 @@ export default async function LabTestDetailPage({ params }: PageProps) {
                   <ShieldCheck className="w-3.5 h-3.5 text-orange-600" />
                   NABL Accredited
                 </span>
-                {test.basic_info.testId && (
+                {validTestId && (
                   <span className="inline-flex items-center gap-1.5 bg-cream-card rounded-pill px-3 py-1.5 text-meta font-semibold text-ink-700 shadow-sh-1 border border-cream-line">
                     <Tag className="w-3.5 h-3.5 text-orange-600" />
-                    ID {test.basic_info.testId}
+                    ID {validTestId}
                   </span>
                 )}
               </div>
@@ -308,11 +332,11 @@ export default async function LabTestDetailPage({ params }: PageProps) {
                       ₹{finalPrice.toLocaleString("en-IN")}
                     </p>
                   </div>
-                  {test.basic_info.reportsWithin && (
+                  {validReportsWithin && (
                     <div className="bg-cream-card/95 backdrop-blur-sm rounded-xl px-3 py-2 shadow-sh-2 flex items-center gap-2">
                       <Clock className="w-4 h-4 text-orange-600" />
                       <p className="text-body-sm font-bold text-ink-900 leading-none">
-                        {test.basic_info.reportsWithin}
+                        {validReportsWithin}
                       </p>
                     </div>
                   )}
@@ -329,29 +353,29 @@ export default async function LabTestDetailPage({ params }: PageProps) {
 
       <div className="mx-auto max-w-7xl px-gutter py-10 lg:py-14 grid gap-6 lg:gap-10 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6">
-          {(test.basic_info.Identifies || test.basic_info.measures) && (
+          {(validIdentifies || validMeasures) && (
             <section className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-4 sm:p-6 lg:p-8">
               <h2 className="text-h2 font-display font-bold text-ink-900 mb-5">
                 About The Test
               </h2>
               <div className="grid sm:grid-cols-2 gap-5">
-                {test.basic_info.Identifies && (
+                {validIdentifies && (
                   <div className="bg-orange-50/60 rounded-xl p-4 border border-orange-100">
                     <p className="text-overline uppercase text-orange-700 font-bold mb-1.5 tracking-overline">
                       Identifies
                     </p>
                     <p className="text-body-sm text-ink-700 leading-relaxed">
-                      {test.basic_info.Identifies}
+                      {validIdentifies}
                     </p>
                   </div>
                 )}
-                {test.basic_info.measures && (
+                {validMeasures && (
                   <div className="bg-orange-50/60 rounded-xl p-4 border border-orange-100">
                     <p className="text-overline uppercase text-orange-700 font-bold mb-1.5 tracking-overline">
                       Measures
                     </p>
                     <p className="text-body-sm text-ink-700 leading-relaxed">
-                      {test.basic_info.measures}
+                      {validMeasures}
                     </p>
                   </div>
                 )}
@@ -445,7 +469,11 @@ export default async function LabTestDetailPage({ params }: PageProps) {
                       image={t.basic_info.imageSrc || tCategory?.image}
                       price={dp || p}
                       originalPrice={dp > 0 && dp < p ? p : undefined}
-                      reportTime={t.basic_info.reportsWithin}
+                      reportTime={
+                        isMeaningfulText(t.basic_info.reportsWithin, 3)
+                          ? t.basic_info.reportsWithin
+                          : undefined
+                      }
                       href={labTestUrl(t)}
                     />
                   );
@@ -484,10 +512,10 @@ export default async function LabTestDetailPage({ params }: PageProps) {
             </div>
 
             <ul className="px-5 py-4 space-y-2.5 text-body-sm text-ink-700 border-b border-cream-line">
-              {test.basic_info.reportsWithin && (
+              {validReportsWithin && (
                 <li className="flex items-center gap-2.5">
                   <Clock className="w-4 h-4 text-orange-600 flex-shrink-0" />
-                  Reports in {test.basic_info.reportsWithin}
+                  Reports in {validReportsWithin}
                 </li>
               )}
               <li className="flex items-center gap-2.5">

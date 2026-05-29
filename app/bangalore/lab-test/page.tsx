@@ -27,6 +27,7 @@ import {
 } from "@/lib/data/labtests";
 import { labTestUrl } from "@/lib/urls";
 import { TestCard } from "@/components/shared/TestCard";
+import { isMeaningfulText } from "@/lib/data/meaningful";
 import { getLabTestById, getLabTestHomepage } from "@/lib/data/labtests";
 import {
   HealthCheckupSlider,
@@ -530,7 +531,7 @@ function TestsGrid({ tests }: { tests: LabTest[] }) {
             originalPrice={
               discounted > 0 && discounted < price ? price : undefined
             }
-            reportTime={test.basic_info.reportsWithin}
+            reportTime={isMeaningfulText(test.basic_info.reportsWithin, 3) ? test.basic_info.reportsWithin : undefined}
             href={labTestUrl(test)}
           />
         );

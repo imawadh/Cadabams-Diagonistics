@@ -1,4 +1,5 @@
 import { TestCard } from "@/components/shared/TestCard";
+import { isMeaningfulText } from "@/lib/data/meaningful";
 import {
   type LabTest,
   getDiscountedPriceNumber,
@@ -33,7 +34,7 @@ export function TestGrid({ overline, title, tests }: TestGridProps) {
                 image={test.basic_info.imageSrc}
                 price={discounted || original}
                 originalPrice={discounted < original ? original : undefined}
-                reportTime={test.basic_info.reportsWithin}
+                reportTime={isMeaningfulText(test.basic_info.reportsWithin, 3) ? test.basic_info.reportsWithin : undefined}
                 href={labTestUrl(test)}
               />
             );

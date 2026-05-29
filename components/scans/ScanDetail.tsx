@@ -25,6 +25,7 @@ import { TestBookingActions } from "@/components/shared/TestBookingActions";
 import { LabStats } from "@/components/shared/LabStats";
 import { CentersListCard } from "@/components/shared/CentersListCard";
 import { getAllCenters, getCenterSlug } from "@/lib/data/centers";
+import { isMeaningfulText as isMeaningfulShared } from "@/lib/data/meaningful";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -146,7 +147,7 @@ export function ScanDetail({ familyPath, slug }: ScanDetailProps) {
 
   const relatedTests = test.relative_test?.tests
     ? getNonLabTestsByIds(test.relative_test.tests.map((t) => t.id)).filter(
-        (t) => t.id !== test.id,
+        (t) => t.id !== test.id && isMeaningfulShared(t.testName, 3),
       )
     : [];
 
@@ -156,6 +157,30 @@ export function ScanDetail({ familyPath, slug }: ScanDetailProps) {
       name: c.basic_info.center_name.trim(),
       slug: getCenterSlug(c),
     }));
+
+  const validIdentifies = isMeaningfulShared(test.basic_info.Identifies, 6)
+    ? test.basic_info.Identifies.trim()
+    : null;
+  const validMeasures = isMeaningfulShared(test.basic_info.measures, 6)
+    ? test.basic_info.measures.trim()
+    : null;
+  const validReportsWithin = isMeaningfulShared(
+    test.basic_info.reportsWithin,
+    3,
+  )
+    ? test.basic_info.reportsWithin.trim()
+    : null;
+  const validTestId =
+    test.basic_info.testId &&
+    /^\d{4,}$/.test(String(test.basic_info.testId))
+      ? String(test.basic_info.testId)
+      : null;
+  const validAlsoKnownAs = isMeaningfulShared(
+    test.basic_info.alsoKnownAs,
+    4,
+  )
+    ? test.basic_info.alsoKnownAs?.trim()
+    : null;
 
   const rawInterpretations = test.interpretations;
   const meaningfulInterpretationCols =
@@ -253,26 +278,26 @@ export function ScanDetail({ familyPath, slug }: ScanDetailProps) {
                 {test.testName}
               </h1>
 
-              {test.basic_info.alsoKnownAs && (
+              {validAlsoKnownAs && (
                 <p className="text-body-sm text-ink-600">
                   Also known as{" "}
                   <span className="font-semibold text-ink-800">
-                    {test.basic_info.alsoKnownAs}
+                    {validAlsoKnownAs}
                   </span>
                 </p>
               )}
 
-              {test.basic_info.Identifies && (
+              {validIdentifies && (
                 <p className="text-body lg:text-h3 text-ink-700 leading-relaxed max-w-2xl">
-                  {test.basic_info.Identifies}
+                  {validIdentifies}
                 </p>
               )}
 
               <div className="flex flex-wrap items-center gap-2 pt-1">
-                {test.basic_info.reportsWithin && (
+                {validReportsWithin && (
                   <span className="inline-flex items-center gap-1.5 bg-cream-card rounded-pill px-3 py-1.5 text-meta font-semibold text-ink-700 shadow-sh-1 border border-cream-line">
                     <Clock className="w-3.5 h-3.5 text-orange-600" />
-                    Reports in {test.basic_info.reportsWithin}
+                    Reports in {validReportsWithin}
                   </span>
                 )}
                 <span className="inline-flex items-center gap-1.5 bg-cream-card rounded-pill px-3 py-1.5 text-meta font-semibold text-ink-700 shadow-sh-1 border border-cream-line">
@@ -283,10 +308,10 @@ export function ScanDetail({ familyPath, slug }: ScanDetailProps) {
                   <ShieldCheck className="w-3.5 h-3.5 text-orange-600" />
                   Advanced equipment
                 </span>
-                {test.basic_info.testId && (
+                {validTestId && (
                   <span className="inline-flex items-center gap-1.5 bg-cream-card rounded-pill px-3 py-1.5 text-meta font-semibold text-ink-700 shadow-sh-1 border border-cream-line">
                     <Tag className="w-3.5 h-3.5 text-orange-600" />
-                    ID {test.basic_info.testId}
+                    ID {validTestId}
                   </span>
                 )}
               </div>
@@ -338,11 +363,11 @@ export function ScanDetail({ familyPath, slug }: ScanDetailProps) {
                       ₹{finalPrice.toLocaleString("en-IN")}
                     </p>
                   </div>
-                  {test.basic_info.reportsWithin && (
+                  {validReportsWithin && (
                     <div className="bg-cream-card/95 backdrop-blur-sm rounded-xl px-3 py-2 shadow-sh-2 flex items-center gap-2">
                       <Clock className="w-4 h-4 text-orange-600" />
                       <p className="text-body-sm font-bold text-ink-900 leading-none">
-                        {test.basic_info.reportsWithin}
+                        {validReportsWithin}
                       </p>
                     </div>
                   )}
@@ -359,29 +384,29 @@ export function ScanDetail({ familyPath, slug }: ScanDetailProps) {
 
       <div className="mx-auto max-w-7xl px-gutter py-10 lg:py-14 grid gap-6 lg:gap-10 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6">
-          {(test.basic_info.Identifies || test.basic_info.measures) && (
+          {(validIdentifies || validMeasures) && (
             <section className="bg-cream-card rounded-2xl shadow-sh-2 border border-cream-line p-4 sm:p-6 lg:p-8">
               <h2 className="text-h2 font-display font-bold text-ink-900 mb-5">
                 About The Scan
               </h2>
               <div className="grid sm:grid-cols-2 gap-5">
-                {test.basic_info.Identifies && (
+                {validIdentifies && (
                   <div className="bg-orange-50/60 rounded-xl p-4 border border-orange-100">
                     <p className="text-overline uppercase text-orange-700 font-bold mb-1.5 tracking-overline">
                       Identifies
                     </p>
                     <p className="text-body-sm text-ink-700 leading-relaxed">
-                      {test.basic_info.Identifies}
+                      {validIdentifies}
                     </p>
                   </div>
                 )}
-                {test.basic_info.measures && (
+                {validMeasures && (
                   <div className="bg-orange-50/60 rounded-xl p-4 border border-orange-100">
                     <p className="text-overline uppercase text-orange-700 font-bold mb-1.5 tracking-overline">
                       Measures
                     </p>
                     <p className="text-body-sm text-ink-700 leading-relaxed">
-                      {test.basic_info.measures}
+                      {validMeasures}
                     </p>
                   </div>
                 )}
@@ -514,7 +539,11 @@ export function ScanDetail({ familyPath, slug }: ScanDetailProps) {
                       image={t.basic_info.imageSrc ?? tCategory?.image ?? null}
                       price={dp || p}
                       originalPrice={dp > 0 && dp < p ? p : undefined}
-                      reportTime={t.basic_info.reportsWithin}
+                      reportTime={
+                        isMeaningfulShared(t.basic_info.reportsWithin, 3)
+                          ? t.basic_info.reportsWithin
+                          : undefined
+                      }
                       href={nonLabTestUrl(t)}
                     />
                   );
@@ -553,10 +582,10 @@ export function ScanDetail({ familyPath, slug }: ScanDetailProps) {
             </div>
 
             <ul className="px-5 py-4 space-y-2.5 text-body-sm text-ink-700 border-b border-cream-line">
-              {test.basic_info.reportsWithin && (
+              {validReportsWithin && (
                 <li className="flex items-center gap-2.5">
                   <Clock className="w-4 h-4 text-orange-600 flex-shrink-0" />
-                  Reports in {test.basic_info.reportsWithin}
+                  Reports in {validReportsWithin}
                 </li>
               )}
               <li className="flex items-center gap-2.5">
