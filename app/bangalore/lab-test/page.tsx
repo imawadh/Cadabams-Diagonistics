@@ -240,16 +240,6 @@ export default async function LabTestsListPage({ searchParams }: PageProps) {
         </div>
       </section>
 
-      {healthCheckupCards.length > 0 && (
-        <HealthCheckupSlider
-          title="Stay ahead of your health"
-          overline="Premium checkups"
-          cards={healthCheckupCards}
-        />
-      )}
-
-      {banners.length > 0 && <BannerCarousel banners={banners} />}
-
       <section className="mx-auto max-w-7xl px-gutter py-10 lg:py-14">
         <div className="grid gap-6 lg:gap-8 lg:grid-cols-[280px_1fr]">
           <FilterSidebar
@@ -291,6 +281,16 @@ export default async function LabTestsListPage({ searchParams }: PageProps) {
           </div>
         </div>
       </section>
+
+      {healthCheckupCards.length > 0 && (
+        <HealthCheckupSlider
+          title="Stay ahead of your health"
+          overline="Premium checkups"
+          cards={healthCheckupCards}
+        />
+      )}
+
+      {banners.length > 0 && <BannerCarousel banners={banners} />}
     </main>
   );
 }
