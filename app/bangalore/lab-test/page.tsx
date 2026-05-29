@@ -27,6 +27,12 @@ import {
 } from "@/lib/data/labtests";
 import { labTestUrl } from "@/lib/urls";
 import { TestCard } from "@/components/shared/TestCard";
+import { getLabTestById, getLabTestHomepage } from "@/lib/data/labtests";
+import {
+  HealthCheckupSlider,
+  type HealthCheckupCard,
+} from "@/components/home/HealthCheckupSlider";
+import { BannerCarousel } from "@/components/home/BannerCarousel";
 
 export const revalidate = 3600;
 
@@ -137,6 +143,37 @@ export default async function LabTestsListPage({ searchParams }: PageProps) {
 
   const hasActiveFilters = Boolean(activeCategory) || searchQuery.length > 0;
 
+  const homepage = getLabTestHomepage();
+  const healthCheckupCards: HealthCheckupCard[] = (
+    homepage?.healthMonitoring?.content ?? []
+  )
+    .map((item) => {
+      const test = getLabTestById(item.test);
+      if (!test) return null;
+      const price = getPriceNumber(test);
+      const discountedPrice = getDiscountedPriceNumber(test);
+      const stated = Number(test.basic_info.discount);
+      const computed =
+        price > discountedPrice
+          ? Math.round(((price - discountedPrice) / price) * 100)
+          : 0;
+      const discountPct = stated > 0 ? stated : computed;
+      return {
+        id: item.id,
+        title: item.title,
+        description: item.description,
+        imageSrc: item.imageSrc,
+        trustedBy: item.trustedBy,
+        reportsWithin: test.basic_info.reportsWithin,
+        price,
+        discountedPrice,
+        discountPct,
+        detailHref: labTestUrl(test),
+      };
+    })
+    .filter((c): c is HealthCheckupCard => c !== null);
+  const banners = homepage?.banner ?? [];
+
   return (
     <main className="bg-cream-bg min-h-screen">
       <section className="relative overflow-hidden bg-gradient-hero text-white">
@@ -202,6 +239,16 @@ export default async function LabTestsListPage({ searchParams }: PageProps) {
           ))}
         </div>
       </section>
+
+      {healthCheckupCards.length > 0 && (
+        <HealthCheckupSlider
+          title="Stay ahead of your health"
+          overline="Premium checkups"
+          cards={healthCheckupCards}
+        />
+      )}
+
+      {banners.length > 0 && <BannerCarousel banners={banners} />}
 
       <section className="mx-auto max-w-7xl px-gutter py-10 lg:py-14">
         <div className="grid gap-6 lg:gap-8 lg:grid-cols-[280px_1fr]">
