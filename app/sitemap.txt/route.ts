@@ -42,7 +42,7 @@ const STATIC_PATHS = [
 export function GET(): Response {
   const urls = new Set<string>();
 
-  for (const p of STATIC_PATHS) urls.add(`${BASE}${p}`);
+  for (const p of STATIC_PATHS) urls.add(p === "" ? `${BASE}/` : `${BASE}${p}`);
   for (const f of SCAN_FAMILIES) urls.add(`${BASE}/bangalore/${f}`);
   for (const c of getAllCenters()) urls.add(`${BASE}${centerUrl(c)}`);
   for (const t of getAllLabTests()) urls.add(`${BASE}${labTestUrl(t)}`);
