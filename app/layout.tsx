@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Header } from "@/components/layout/Header";
 import { SiteFooterArea } from "@/components/layout/SiteFooterArea";
 import { FloatingContactCTA } from "@/components/layout/FloatingContactCTA";
@@ -17,6 +17,12 @@ export const metadata: Metadata = {
     siteName: "Cadabams Diagnostics",
   },
   robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
