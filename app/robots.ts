@@ -9,7 +9,10 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/cart", "/checkout", "/login"],
       },
     ],
-    sitemap: "https://cadabamsdiagnostics.com/sitemap.xml",
+    sitemap: [
+      "https://cadabamsdiagnostics.com/sitemap.xml",
+      "https://cadabamsdiagnostics.com/sitemap.txt",
+    ],
     host: "https://cadabamsdiagnostics.com",
   };
 }
